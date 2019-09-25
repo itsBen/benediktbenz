@@ -1,18 +1,36 @@
 .site-footer {
     padding: 20px 0;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
 
     .soc {
         a {
-            display: inline-block;
             vertical-align: middle;
-            margin-left: 12px;
-            font-size: 1.5em;
+            margin: 0 12px;
+            font-size: 2em;
         }
     }
 
     .copy {
+        @include hide;
+
         color: $color-font-light;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .site-footer {
+        justify-content: space-between;
+
+        .soc {
+            a {
+                margin: 0 0 0 12px;
+                font-size: 1.5em;
+            }
+        }
+
+        .copy {
+            @include show;
+        }
     }
 }

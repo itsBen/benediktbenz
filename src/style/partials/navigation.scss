@@ -1,0 +1,31 @@
+// Navigation bar
+// ==================================================
+
+/* MOBILE FIRST
+ *
+ * on phone:
+ * hide nav elements & show burger
+ *
+ * on desktop
+ * show nav elements & hide burger
+ *
+ * default: on phone aka mobile first
+ */
+
+button.hamburger{
+    @include show;
+}
+
+nav.site-nav {
+    @include hide;
+}
+
+@media screen and (min-width: 576px) {
+    nav.site-nav {
+        @include show;
+    }
+
+    button.hamburger{
+        @include hide;
+    }
+}

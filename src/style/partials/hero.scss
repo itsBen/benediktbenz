@@ -10,19 +10,25 @@
     }
 }
 
+.hero-container-inner{
+    display: flex;
+    flex-direction: column;
+}
+
 .hero-description{
-    margin: 0 0 0 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     h1 {
-        text-align: left;
+        padding: 20px 0 0 0;
+        text-align: center;
         font-size: 1.5em;
         font-weight: $bold;
     }
 
     ul {
+        @include hide;
         display: inline-flex;
 
         li {
@@ -37,5 +43,25 @@
                 margin: 0 10px 0 0;
             }
         }
+    }
+}
+
+
+@media screen and (min-width: 576px) {
+    .hero-description{
+        flex-direction: column;
+        margin: 0 0 0 20px;
+
+        h1 {
+            text-align: left;
+        }
+
+        ul {
+            @include show;
+        }
+    }
+
+    .hero-container-inner{
+        flex-direction: row;
     }
 }

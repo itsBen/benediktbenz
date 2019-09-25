@@ -1,5 +1,6 @@
 // Test import of a JavaScript function, an SVG, and Sass
 import HelloWorld from "./js/helloWorld"
+import { addEventHandler } from "./js/hamburger"
 //import WebpackLogo from "./images/webpack-logo.svg"
 import "./style/index.scss"
 
@@ -14,3 +15,10 @@ import "./style/index.scss"
 // Append SVG and heading nodes to the DOM
 //const app = document.querySelector("#root")
 //app.append(logo, greeting)
+
+
+
+
+  // Look for .hamburger and attach the on click listener
+  const hamburger = document.querySelector(".hamburger");
+  addEventHandler(hamburger);
