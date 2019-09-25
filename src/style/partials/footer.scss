@@ -1,7 +1,4 @@
 .site-footer {
-    //position: fixed;
-    //left: 0;
-    //bottom: 25px;
     padding: 20px 0;
     width: 100%;
     justify-content: space-between;
@@ -16,7 +13,6 @@
     }
 
     .copy {
-        //align-self: flex-start;
         color: $color-font-light;
     }
 }
