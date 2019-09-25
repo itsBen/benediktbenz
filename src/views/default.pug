@@ -8,33 +8,33 @@ html
         meta(name="viewport" content="width=device-width, initial-scale=1")
     body
         div.container
-            block header
-                header.site-header
-                    h1 
-                        a(href="#") BB
-                    nav.site-nav
-                        ul.main-nav-list
-                            li
-                                a(href="#") Home
-                            li
-                                a(href="#") Home 1
-                            li
-                                a(href="#") Home 2
-                            li
-                                a(href="#") Home 3
+            div.flex-wrapper.flex-column
+                block header
+                    header.flex-row.site-header
+                        h1
+                            a(href="#") BB
+                        nav.site-nav
+                            ul.main-nav-list
+                                li
+                                    a(href="#") Home
+                                li
+                                    a(href="#") Home 1
+                                li
+                                    a(href="#") Home 2
+                                li
+                                    a(href="#") Home 3
 
-            block content
+                block content
 
-            footer.footer
-                div.soc
-                    a(href="https://www.instagram.com/it.s.ben" target="__blank")
-                        i.icon.ion-logo-instagram
-                    a(href="https://www.linkedin.com/in/benediktbenz" target="__blank")
-                        i.icon.ion-logo-linkedin
-                    a(href="https://github.com/itsBen" target="__blank")
-                        i.icon.ion-logo-github
-                    a(href="mailto:benedikt.benz@outlook.com")
-                        i.icon.ion-md-mail
-
-                div.copy
-                    p © 2019 Benedikt Benz. All rights reserved.
+                footer.flex-row.site-footer
+                    div.copy
+                        p © 2019 Benedikt Benz. All rights reserved.
+                    div.soc
+                        a(href="https://www.instagram.com/it.s.ben" target="__blank")
+                            i.icon.ion-logo-instagram
+                        a(href="https://www.linkedin.com/in/benediktbenz" target="__blank")
+                            i.icon.ion-logo-linkedin
+                        a(href="https://github.com/itsBen" target="__blank")
+                            i.icon.ion-logo-github
+                        a(href="mailto:benedikt.benz@outlook.com")
+                            i.icon.ion-md-mail

@@ -1,21 +1,17 @@
 .site-header {
-    position: fixed;
-    left: 0;
-    top: 30px;
-    padding: 15px 30px 30px;
+    //position: fixed;
+    //left: 0;
+    //top: 30px;
 
-    width: 100%;
+    padding: 20px 0;
 
-	display: flex;
-	align-items: center;
 	justify-content: space-between;
-    flex-wrap: wrap;
 
     h1 a {
         font-weight: $bold;
         font-size: 2em;
     }
-    
+
     ul {
         margin: 1em 0 .5em;
         text-align: center;
@@ -23,7 +19,7 @@
         li {
             display: inline;
         }
-    
+
         a {
             display: inline-block;
             padding: .5em 1.5em;

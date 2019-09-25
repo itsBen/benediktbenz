@@ -3,12 +3,10 @@
 }
 
 .hero-container{
-    display: flex;
-    flex-direction: row;
-    margin: 0 auto;
+    width: 100%;
 
     img {
-        border: 1px solid $color-font-light;		
+        border: 1px solid $color-font-light;
     }
 }
 
@@ -34,6 +32,7 @@
             &:hover{
                 color: $color-accent;
             }
+
             &:first-child{
                 margin: 0 10px 0 0;
             }
