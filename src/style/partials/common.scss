@@ -5,8 +5,6 @@
 
 body {
     background: #fff;
-    margin: 0px;
-    height: 100%;
 
     font-family: $base-font-family;
     font-weight: $base-font-weight;
@@ -17,7 +15,6 @@ body {
 a {
     color: $color-font-full;
     text-decoration: none;
-    opacity: 1;
     outline: none;
 
     &:hover {
@@ -28,8 +25,4 @@ a {
 .container {
     margin: 0 30px;
     overflow: hidden;
-
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
