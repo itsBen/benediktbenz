@@ -1,0 +1,23 @@
+.footer {   
+    position: fixed;
+    left: 0;
+    bottom: 25px;
+    padding: 15px 30px 30px;
+    width: 100%;
+}
+
+.footer .soc {
+    float: right;
+}
+
+.footer .soc a {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 12px;
+    font-size:1.5em;
+}
+
+.footer .copy {
+    float: left;
+    color: $color-font-light;
+}

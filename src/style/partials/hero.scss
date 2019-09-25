@@ -1,0 +1,42 @@
+.hero-wrapper{
+    display: flex;
+}
+
+.hero-container{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+
+    img {
+        border: 1px solid $color-font-light;		
+    }
+}
+
+.hero-description{
+    margin: 0 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h1 {
+        text-align: left;
+        font-size: 1.5em;
+        font-weight: $bold;
+    }
+
+    ul {
+        display: inline-flex;
+
+        li {
+            margin: 0 10px;
+            text-transform: uppercase;
+
+            &:hover{
+                color: $color-accent;
+            }
+            &:first-child{
+                margin: 0 10px 0 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    margin: 0px;
+    height: 100%;
+
+    font-family: $base-font-family;
+    font-weight: $base-font-weight;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+}
+
+a {
+    color: $color-font-full;
+    text-decoration: none;
+    opacity: 1;
+    outline: none;
+
+    &:hover {
+        color: $color-accent;
+    }
+}
+
+.container {
+    margin: 0 30px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
