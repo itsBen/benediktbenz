@@ -29,7 +29,6 @@
 
     ul {
         @include hide;
-        display: inline-flex;
 
         li {
             margin: 0 10px;
@@ -58,6 +57,7 @@
 
         ul {
             @include show;
+            display: inline-flex;
         }
     }
 
