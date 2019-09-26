@@ -69,7 +69,7 @@ const ruleFonts = {
  */
 const rulePug = {
     test: /\.pug$/,
-    loaders: [ "pug-loader" ]
+    loader: "pug-loader"
 }
 
 module.exports = {
