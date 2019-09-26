@@ -3,7 +3,7 @@
 Minimal Webpack 4 based personal website.
 
 ## Usage
- 
+
 ### Development server
 
 ```bash
