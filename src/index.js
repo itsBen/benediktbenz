@@ -1,19 +1,8 @@
-// Test import of a JavaScript function, an SVG, and Sass
-//import HelloWorld from "./js/helloWorld"
-import initHamburger from "./js/hamburger"
-//import WebpackLogo from "./images/webpack-logo.svg"
+//import initHamburger from "./js/hamburger"
 import "./style/index.scss"
 
-// Create SVG logo node
-//const logo = document.createElement("img")
-//logo.src = WebpackLogo
+//initHamburger();
 
-// Create heading node
-//const greeting = document.createElement("h1")
-//greeting.textContent = HelloWorld()
-
-// Append SVG and heading nodes to the DOM
-//const app = document.querySelector("#root")
-//app.append(logo, greeting)
-
-initHamburger();
+// Images
+// ==================================================
+import me from "./images/benedikt-benz.200x200.jpg"
