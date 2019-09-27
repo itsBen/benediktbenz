@@ -27,7 +27,7 @@
         font-weight: $bold;
     }
 
-    ul {
+    .social-text {
         @include hide;
 
         li {
@@ -43,6 +43,16 @@
             }
         }
     }
+
+    .social-icon {
+        @include show;
+        display: inline-flex;
+        a {
+            vertical-align: middle;
+            margin: 0 12px;
+            font-size: 2em;
+        }
+    }
 }
 
 
@@ -55,9 +65,13 @@
             text-align: left;
         }
 
-        ul {
+        .social-text {
             @include show;
             display: inline-flex;
+        }
+
+        .social-icon {
+            @include hide;
         }
     }
 

@@ -3,7 +3,9 @@
     width: 100%;
     justify-content: center;
 
-    .soc {
+    .social-icon {
+        @include hide;
+        
         a {
             vertical-align: middle;
             margin: 0 12px;
@@ -12,8 +14,6 @@
     }
 
     .copy {
-        @include hide;
-
         color: $color-font-light;
     }
 }
@@ -22,15 +22,13 @@
     .site-footer {
         justify-content: space-between;
 
-        .soc {
+        .social-icon {
+            @include show;
+            display: inline-flex;
             a {
                 margin: 0 0 0 12px;
                 font-size: 1.5em;
             }
-        }
-
-        .copy {
-            @include show;
         }
     }
 }
