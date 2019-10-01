@@ -18,11 +18,21 @@ npm start
 npm run build
 ```
 
+## Credits
+
+This project uses several open source packages:
+
+* <a href="https://github.com/jonsuh/hamburgers" target="_blank">hamburgers</a>
+* <a href="https://ionicons.com/" target="_blank">Ionicons</a>
+
+<br>
+
 ## License
 
 [MIT](https://github.com/itsBen/benediktbenz/blob/master/LICENCE.md)
 
----
+
+## Author
 
 > [benediktbenz.com](https://www.benediktbenz.com) &nbsp;&middot;&nbsp;
 > GitHub [@itsBen](https://github.com/itsben)
