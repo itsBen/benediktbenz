@@ -1,7 +1,7 @@
 {
     "name": "benediktbenz",
-    "version": "0.0.1",
-    "description": "-",
+    "version": "1.0.0",
+    "description": "Personal website",
     "main": "main.js",
     "private": true,
     "scripts": {
@@ -10,13 +10,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "-"
+        "url": "https://github.com/itsBen/benediktbenz"
     },
     "keywords": [
         "-"
     ],
-    "author": "Benedikt Benz <benedikt.benz@outlook.com>",
-    "license": "UNLICENSED",
+    "author": "Benedikt Benz <benedikt.benz@outlook.com> (https://benediktbenz.com)",
+    "license": "MIT",
     "dependencies": {
         "pug": "^2.0.4"
     },
