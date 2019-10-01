@@ -17,3 +17,12 @@ npm start
 ```bash
 npm run build
 ```
+
+## License
+
+[MIT](https://github.com/itsBen/benediktbenz/blob/master/LICENCE.md)
+
+---
+
+> [benediktbenz.com](https://www.benediktbenz.com) &nbsp;&middot;&nbsp;
+> GitHub [@itsBen](https://github.com/itsben)
