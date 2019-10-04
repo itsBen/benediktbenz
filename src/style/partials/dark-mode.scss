@@ -1,0 +1,47 @@
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #111;
+    }
+}
+
+
+
+body.dark {
+    background-color: #111;
+
+    .site-header h1 a {
+        color: #eee;
+
+        &:hover {
+            color: $color-accent
+        }
+    }
+
+    .hero-container {
+        img {
+            border: none;
+        }
+
+        h1 {
+            color: #eee;
+        }
+
+        .social-text a {
+            color: #999;
+
+            &:hover {
+                color: $color-accent
+            }
+        }
+    }
+
+    .site-footer {
+        a {
+            color: #999;
+
+            &:hover {
+                color: $color-accent
+            }
+        }
+    }
+}
