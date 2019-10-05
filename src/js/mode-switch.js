@@ -9,17 +9,15 @@ const addOnClickHandler = (button) => {
     button.addEventListener("click", () => {
 
         switchIcons();
+        toggleMode();
 
-        /*
-        if (iconElement.classList.contains("ion-md-moon")) {
-            iconElement.classList.remove("ion-md-moon");
-            iconElement.classList.add("ion-md-sunny");
-        } else {
-            iconElement.classList.remove("ion-md-sunny");
-            iconElement.classList.add("ion-md-moon");
-        }
-        */
     });
+}
+
+const toggleMode = () => {
+    const bodyElement = document.getElementsByTagName("body")[0]
+
+    bodyElement.classList.toggle("dark");
 }
 
 const switchIcons = () => {
