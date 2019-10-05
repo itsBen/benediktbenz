@@ -5,8 +5,8 @@
     "main": "main.js",
     "private": true,
     "scripts": {
-        "start": "webpack-dev-server --config config/webpack.dev.config.js",
-        "build": "webpack --config config/webpack.prod.config.js"
+        "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.config.js",
+        "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js"
     },
     "repository": {
         "type": "git",
@@ -31,7 +31,6 @@
         "cross-env": "^6.0.0",
         "css-loader": "^3.2.0",
         "cssnano": "^4.1.10",
-        "dotenv": "^8.1.0",
         "eslint": "^6.2.2",
         "eslint-loader": "^3.0.0",
         "file-loader": "^4.2.0",

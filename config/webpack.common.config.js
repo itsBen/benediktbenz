@@ -99,6 +99,7 @@ module.exports = {
      */
     entry: {
         main: paths.src + "/index.js",
+        analytics: paths.src + "/js/analytics.js"
     },
 
     /**
