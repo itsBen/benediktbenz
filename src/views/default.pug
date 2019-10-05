@@ -1,15 +1,15 @@
 doctype html
 html(lang="en")
     head
+        include ./analytics.pug
+
         title Benedikt Benz
-        link(rel="stylesheet", href="/css/style.css")
-        link(rel="stylesheet", href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css")
+        link(rel="stylesheet", type="text/css", href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css")
 
         meta(name="viewport" content="width=device-width, initial-scale=1")
         meta(charset="utf-8")
         meta(name="Description", content="Personal website of Benedikt Benz")
 
-        include ./analytics.pug
     body
         div.container
             div.flex-wrapper.flex-column
