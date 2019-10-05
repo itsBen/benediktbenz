@@ -2,8 +2,8 @@ body.dark {
     background-color: #111;
 
     button.mode-switch {
-        color: #eee;        
-        
+        color: #eee;
+
         &:hover {
             color: $color-accent
         }
@@ -37,7 +37,7 @@ body.dark {
 
     .site-footer {
         a {
-            color: #999;
+            color: #eee;
 
             &:hover {
                 color: $color-accent
