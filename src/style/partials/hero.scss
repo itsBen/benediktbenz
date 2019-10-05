@@ -47,6 +47,8 @@
     .social-icon {
         @include show;
         display: inline-flex;
+        justify-content: center;
+
         a {
             vertical-align: middle;
             margin: 0 12px;

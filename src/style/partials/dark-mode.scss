@@ -33,6 +33,14 @@ body.dark {
                 color: $color-accent
             }
         }
+
+        .social-icon a {
+            color: #eee;
+
+            &:hover {
+                color: $color-accent
+            }
+        }
     }
 
     .site-footer {
