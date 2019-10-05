@@ -1,4 +1,4 @@
-export const init = () => {
+const init = () => {
     // Look for .hamburger and attach the on click listener
     const hamburger = document.querySelector(".hamburger");
     addEventHandler(hamburger);
@@ -12,3 +12,7 @@ const addEventHandler = (element) => {
         // Do something else, like open/close menu
     });
 }
+
+module.exports = {
+    init: init
+};
