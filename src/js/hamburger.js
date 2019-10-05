@@ -1,10 +1,10 @@
-export default function init() {
+export const init = () => {
     // Look for .hamburger and attach the on click listener
     const hamburger = document.querySelector(".hamburger");
     addEventHandler(hamburger);
 }
 
-function addEventHandler(element) {
+const addEventHandler = (element) => {
     // On click
     element.addEventListener("click", function () {
         // Toggle class "is-active"
