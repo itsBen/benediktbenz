@@ -1,8 +1,13 @@
-//import initHamburger from "./js/hamburger"
-import "./style/index.scss"
+// JavaScript
+// ==================================================
+import modeSwitch from "./js/mode-switch";
 
-//initHamburger();
+modeSwitch.init();
+
+// Styles
+// ==================================================
+import "./style/index.scss";
 
 // Images
 // ==================================================
-import me from "./images/benedikt-benz.200x200.jpg"
+import me from "./images/benedikt-benz.200x200.jpg";
