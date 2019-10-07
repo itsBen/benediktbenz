@@ -1,8 +1,8 @@
 // JavaScript
 // ==================================================
-import modeSwitch from "./js/mode-switch";
+import darkmode from "./js/darkmode";
 
-modeSwitch.init();
+darkmode.init();
 
 // Styles
 // ==================================================
