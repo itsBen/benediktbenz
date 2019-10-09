@@ -28,7 +28,6 @@ const addOnClickHandler = (button) => {
             setMode("light", "ion-md-sunny");
         } else {
             setMode("dark", "ion-md-moon");
-
         }
     });
 }
