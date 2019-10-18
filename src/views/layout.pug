@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
     head
-        include ./analytics.pug
+        include ./static/analytics.pug
 
         title Benedikt Benz
         link(rel="stylesheet", type="text/css", href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css")
@@ -13,8 +13,8 @@ html(lang="en")
     body
         div.container
             div.flex-wrapper.flex-column
-                include ./header.pug
+                include ./static/header.pug
 
                 block content
 
-                include ./footer.pug
+                include ./static/footer.pug
