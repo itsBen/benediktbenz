@@ -13,46 +13,8 @@ html(lang="en")
     body(data-mode="light")
         div.container
             div.flex-wrapper.flex-column
-                block header
-                    header.flex-row.site-header
-                        h1
-                            a(href="#") BB
-
-                        //-
-                            button(type="button" class="hamburger hamburger--slider")
-                                span.hamburger-box
-                                    span.hamburger-inner
-
-                            nav.site-nav
-                                ul.site-nav-list
-                                    li
-                                        a(href="#") Home
-                                    li
-                                        a(href="#") Home 1
-                                    li
-                                        a(href="#") Home 2
-                                    li
-                                        a(href="#") Home 3
-                                
-                        button.mode-switch
-                            i(alt="dark mode" id="icon-dark-mode").icon.ion-md-moon
-                            i(alt="light mode" id="icon-light-mode").icon.ion-md-sunny.hidden
+                include ./header.pug
 
                 block content
 
-                footer.flex-row.site-footer
-                    p.copy © #{new Date().getFullYear()} Benedikt Benz. All rights reserved.
-
-                    ul.social-icon
-                        li
-                            a(href="https://www.instagram.com/it.s.ben" target="__blank")
-                                i.icon.ion-logo-instagram
-                        li
-                            a(href="https://www.linkedin.com/in/benediktbenz" target="__blank")
-                                i.icon.ion-logo-linkedin
-                        li
-                            a(href="https://github.com/itsBen" target="__blank")
-                                i.icon.ion-logo-github
-                        li
-                            a(href="mailto:benedikt.benz@outlook.com")
-                                i.icon.ion-md-mail
+                include ./footer.pug
