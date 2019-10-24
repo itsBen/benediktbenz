@@ -15,6 +15,9 @@ button {
     text-align: center;
     -webkit-appearance: none;
     -moz-appearance: none;
+
+    // remove blue box around button when click it on mobile
+    -webkit-tap-highlight-color: transparent;
 }
 
 button:hover {
