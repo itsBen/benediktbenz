@@ -1,9 +1,10 @@
-const paths = require("./paths")
 const merge = require("webpack-merge")
-const common = require("./webpack.common.config.js")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const TerserJSPlugin = require("terser-webpack-plugin")
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+
+const paths = require("./paths")
+const common = require("./webpack.common")
 
 module.exports = merge(common, {
   mode: "production",
@@ -19,7 +20,8 @@ module.exports = merge(common, {
      *
      * Extracts CSS into separate files.
      *
-     * Note: style-loader is for development, MiniCssExtractPlugin is for production.
+     * Note: style-loader is for development, MiniCssExtractPlugin is for
+     * production.
      * They cannot be used together in the same config.
      */
     new MiniCssExtractPlugin({
@@ -48,6 +50,6 @@ module.exports = merge(common, {
    * Production minimizing of JavaSvript and CSS assets.
    */
   optimization: {
-    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    minimizer: [new TerserJSPlugin({}), new CssMinimizerPlugin({})],
   },
 })
