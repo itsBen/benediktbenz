@@ -9,13 +9,19 @@ Minimal Webpack 4 based personal website.
 ### Development server
 
 ```bash
-npm start
+npm run start
 ```
 
 ### Production build
 
 ```bash
 npm run build
+```
+
+### Lint
+
+```bash
+npm run lint
 ```
 
 ## Credits
