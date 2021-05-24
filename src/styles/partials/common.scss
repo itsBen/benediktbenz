@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+a {
+  color: $color-font-full;
+  text-decoration: none;
+  outline: none;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.container {
+  margin: 0 30px;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}

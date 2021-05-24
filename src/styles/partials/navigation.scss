@@ -12,20 +12,20 @@
  * default: on phone aka mobile first
  */
 
-button.hamburger{
-    @include show;
+button.hamburger {
+  @include show;
 }
 
 nav.site-nav {
-    @include hide;
+  @include hide;
 }
 
 @media screen and (min-width: 576px) {
-    nav.site-nav {
-        @include show;
-    }
+  nav.site-nav {
+    @include show;
+  }
 
-    button.hamburger{
-        @include hide;
-    }
+  button.hamburger {
+    @include hide;
+  }
 }
