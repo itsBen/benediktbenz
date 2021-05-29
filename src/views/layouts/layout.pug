@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+    head
+        include ../partials/analytics.pug
+
+        title Benedikt Benz
+
+        link(rel="preload" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'")
+        noscript
+          link(rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css")
+
+    body
+        div.container
+            div.flex-wrapper.flex-column
+                include ../partials/header.pug
+
+                block content
+
+                include ../partials/footer.pug

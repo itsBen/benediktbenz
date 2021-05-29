@@ -1,32 +1,37 @@
-// // JavaScript
-// // ==================================================
-// import darkmode from "./js/darkmode";
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/first */
+/* eslint-disable semi */
+// JavaScript
+// ==================================================
+import darkmode from '@/js/darkmode'
 
-// darkmode.init();
-
-// // Styles
-// // ==================================================
-// import "./style/index.scss";
-
-// // Images
-// // ==================================================
-// import me from "./images/benedikt-benz.200x200.jpg";
-
-// Test import of a JavaScript module
-import { example } from '@/js/example'
-
-// Test import of an asset
-import webpackLogo from '@/images/benedikt-benz.jpg'
-
-// Test import of styles
+// Styles
+// ==================================================
 import '@/styles/index.scss'
 
-// Appending to the DOM
-const logo = document.createElement('img')
-logo.src = webpackLogo
+// Images
+// ==================================================
+import imageBenediktBenz from '@/images/benedikt-benz.jpg'
 
-const heading = document.createElement('h1')
-heading.textContent = example()
+darkmode.init()
 
-const app = document.querySelector('#root')
-app.append(logo, heading)
+document.getElementById('image-benedikt-benz').src = imageBenediktBenz
+
+// // Test import of a JavaScript module
+// import { example } from '@/js/example'
+
+// // Test import of an asset
+// import webpackLogo from '@/images/benedikt-benz.jpg'
+
+// // Test import of styles
+// import '@/styles/index.scss'
+
+// // Appending to the DOM
+// const logo = document.createElement('img')
+// logo.src = webpackLogo
+
+// const heading = document.createElement('h1')
+// heading.textContent = example()
+
+// const app = document.querySelector('#root')
+// app.append(logo, heading)
