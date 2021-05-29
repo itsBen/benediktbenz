@@ -77,27 +77,7 @@ module.exports = {
       }, ],
     }),
 
-    // Generates an HTML file from a template
-    // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
-    // new HtmlWebpackPlugin({
-    //   title: 'webpack Boilerplate',
-    //   favicon: paths.src + '/images/favicon.ico',
-    //   template: paths.src + '/views/index.html', // template file
-    //   filename: 'index.html', // output file
-    //   inject: 'head',
-    //   'meta': {
-    //     'viewport': 'width=device-width, initial-scale=1',
-    //     'charset': 'utf-8',
-    //     'description' : 'Personal website of Benedikt Benz',
-    //     'keywords':
-    //       'Personal Website, Website, Benedikt Benz, HTML, CSS, JavaScript',
-    //     'author': 'Benedikt Benz'
-    //   }
-    // }),
-
     new HtmlWebpackPlugin({
-      title: 'webpack Boilerplate',
-      // favicon: paths.src + '/images/favicon.ico',
       template: paths.src + '/views/index.pug',
       filename: 'index.html',
       inject: 'head',
@@ -111,12 +91,11 @@ module.exports = {
       }
     }),
 
-    // new HtmlWebpackPlugin({
-    //   title: '404-page',
-    //   template: paths.src + '/404.html', // template file
-    //   filename: '404.html', // output file
-    //   inject: 'head',
-    // }),
+    new HtmlWebpackPlugin({
+      template: paths.src + '/views/404.pug',
+      filename: '404.html', // output file
+      inject: 'head',
+    }),
 
     // new PreloadWebpackPlugin({
     //   rel: 'preload',
