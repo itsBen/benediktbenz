@@ -5,7 +5,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PrettierPlugin = require('prettier-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
-// const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin")
 
@@ -96,16 +95,6 @@ module.exports = {
       filename: '404.html', // output file
       inject: 'head',
     }),
-
-    // new PreloadWebpackPlugin({
-    //   rel: 'preload',
-    //   as(entry) {
-    //     if (/\.(woff|woff2|ttf|otf)$/.test(entry)) return 'font'
-    //     return 'script'
-    //   },
-    //   fileWhitelist: [/\.(woff|woff2|ttf|otf)$/],
-    //   include: 'allAssets'
-    // }),
 
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
