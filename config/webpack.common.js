@@ -83,14 +83,6 @@ module.exports = {
       template: paths.src + '/views/index.pug',
       filename: 'index.html',
       inject: 'head',
-      'meta': {
-        'viewport': 'width=device-width, initial-scale=1',
-        'charset': 'utf-8',
-        'description' : 'Personal website of Benedikt Benz',
-        'keywords':
-          'Personal Website, Website, Benedikt Benz, HTML, CSS, JavaScript',
-        'author': 'Benedikt Benz'
-      }
     }),
 
     new HtmlWebpackPlugin({
