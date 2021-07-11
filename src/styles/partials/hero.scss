@@ -4,8 +4,13 @@
   // 80px height from header
   margin-top: -80px;
 
-  // 40px height from footer
-  margin-bottom: -40px;
+  // 62px from height of footer 20px margin
+  margin-bottom: -84px;
+
+  @media screen and (min-width: 576px) {
+    // 40px height from footer
+    margin-bottom: -40px;
+  }
 
   justify-content: center;
 

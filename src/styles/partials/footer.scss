@@ -1,12 +1,14 @@
 #site-footer {
+  @include hide;
   width: 100%;
   margin: 0 0 20px 0;
+  z-index: 70;
 
   @media screen and (min-width: 576px) {
+    @include show;
     position: sticky;
     bottom: 10px;
     height: 40px;
-    z-index: 70;
     margin: 0;
   }
 
