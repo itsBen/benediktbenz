@@ -1,6 +1,9 @@
-.site-header {
-  padding: 20px 0;
-  justify-content: space-between;
+#site-header {
+  position: sticky;
+  top: 0;
+  height: 80px;
+  z-index: 70;
+  width: 100%;
 
   h1 a {
     font-weight: $bold;
