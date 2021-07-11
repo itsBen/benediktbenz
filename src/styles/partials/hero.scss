@@ -1,7 +1,12 @@
 .hero-container {
   height: 100vh;
-  //  80px height from header
+
+  // 80px height from header
   margin-top: -80px;
+
+  // 40px height from footer
+  margin-bottom: -40px;
+
   justify-content: center;
 
   width: 100%;
