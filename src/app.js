@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 // JavaScript
 // ==================================================
 import darkmode from '@/js/darkmode'
@@ -7,10 +6,4 @@ import darkmode from '@/js/darkmode'
 // ==================================================
 import '@/styles/index.scss'
 
-// Images
-// ==================================================
-// import imageBenediktBenz from '@/images/benedikt-benz.jpg'
-
 darkmode.init()
-
-// document.getElementById('image-benedikt-benz').src = imageBenediktBenz
