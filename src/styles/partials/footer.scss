@@ -1,28 +1,39 @@
 #site-footer {
-  padding: 20px 0;
   width: 100%;
-  justify-content: center;
+  margin: 0 0 20px 0;
 
   @media screen and (min-width: 576px) {
-    justify-content: space-between;
+    position: sticky;
+    bottom: 10px;
+    height: 40px;
+    z-index: 70;
+    margin: 0;
+  }
+
+  .flex-row {
+    flex-direction: column;
+
+    @media screen and (min-width: 576px) {
+      flex-direction: row;
+    }
   }
 
   .social-icon {
-    @include hide;
-
+    display: inline-flex;
+    margin: 20px 0 0 0;
     @media screen and (min-width: 576px) {
-      @include show;
-      display: inline-flex;
-      a {
-        margin: 0 0 0 12px;
-        font-size: 1.5em;
-      }
+      margin: 0;
     }
 
     a {
       vertical-align: middle;
-      margin: 0 12px;
-      font-size: 2em;
+      margin: 0 10px;
+
+      @media screen and (min-width: 576px) {
+        margin: 0 0 0 20px;
+      }
+
+      font-size: 1.5em;
     }
   }
 
