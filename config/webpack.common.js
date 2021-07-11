@@ -4,6 +4,7 @@ const {
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PrettierPlugin = require('prettier-webpack-plugin')
+const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin")
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin")
@@ -17,9 +18,9 @@ const rule = {
     use: ['babel-loader']
   },
 
-  // Images: Copy image files to build folder
+  // Images: Copy image files to dist folder
   images: {
-    test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+    test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
     type: 'asset/resource'
   },
 
@@ -75,6 +76,8 @@ module.exports = {
         noErrorOnMissing: true,
       }, ],
     }),
+
+    new ImageminWebpWebpackPlugin(),
 
     new HtmlWebpackPlugin({
       template: paths.src + '/views/index.pug',

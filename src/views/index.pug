@@ -4,7 +4,11 @@ block content
     main.flex-row
         div.hero-container.flex-column.flex-centered
             div.hero-container-inner
-                img.img-rounded(id='image-benedikt-benz' alt="Benedikt Benz" width="200px" height="200px")
+                picture(id="image-benedikt-benz" alt="Benedikt Benz" width="200px" height="200px")
+                    source(type="image/webp" srcset="/assets/benedikt-benz.webp")
+                    source(type="image/jpeg" srcset="/assets/benedikt-benz.jpg")
+                    img.img-rounded(src="/assets/benedikt-benz.jpg" alt="Benedikt Benz" width="200px" height="200px")
+
                 div.hero-description
                     h1 Benedikt Benz
                     ul.social-text
