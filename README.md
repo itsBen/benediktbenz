@@ -2,7 +2,7 @@
 
 > Minimal Webpack 5 based personal website.
 
-
+[![Build Status](https://travis-ci.com/itsBen/benediktbenz.svg?branch=main)](https://travis-ci.com/github/itsBen/benediktbenz)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2a89a8dd-e6eb-494b-b685-58cc6cd7e837/deploy-status)](https://app.netlify.com/sites/stupefied-darwin-cd96c2/deploys)
 
 [**Live Site**](https://benediktbenz.com)
