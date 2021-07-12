@@ -1,42 +1,39 @@
 # benediktbenz
 
-Minimal Webpack 5 based personal website.
+> Minimal Webpack 5 based personal website.
+
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2a89a8dd-e6eb-494b-b685-58cc6cd7e837/deploy-status)](https://app.netlify.com/sites/stupefied-darwin-cd96c2/deploys)
 
+[**Live Site**](https://benediktbenz.com)
+
 ## Usage
 
-### Installation
-
-1. `git clone https://github.com/itsBen/benediktbenz`
-2. `cd benediktbenz`
-3. `npm install`
-
-
-### Development
-
+First, install the packages:
 ```bash
-npm run start
-```
+# Install dependencies
 
-## Production build
+ $ npm install
 
-```bash
-npm run build
-```
+# Start development server at port 8080
 
-## Lint
+ $ npm run start
 
-```bash
-npm run lint
+# Run linters
+
+ $ npm run test
+
+# Build app for production (gets output in the 'dist' directory)
+
+ $ npm run build
 ```
 
 ## Credits
 
-This project uses following open source packages:
+This project uses following 3rd party packages:
 
-* <a href="https://github.com/jonsuh/hamburgers" target="_blank">hamburgers</a>
-* <a href="https://ionicons.com/" target="_blank">Ionicons</a>
+- https://jonsuh.com/hamburgers/
+- <a href="https://ionicons.com/" target="_blank">Ionicons</a>
 
 
 ## Author
