@@ -3,9 +3,7 @@ const {
 } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const PrettierPlugin = require('prettier-webpack-plugin')
 const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin")
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin")
 
@@ -91,18 +89,11 @@ module.exports = {
       inject: 'head',
     }),
 
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'defer'
-    }),
-
     // ESLint configuration
     new ESLintPlugin({
       files: ['.', 'src', 'config'],
       formatter: 'table',
     }),
-
-    // Prettier configuration
-    new PrettierPlugin(),
 
     new FaviconsWebpackPlugin({
       logo: "./src/images/favicon.png",
