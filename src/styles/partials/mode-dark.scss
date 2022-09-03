@@ -1,16 +1,22 @@
 body.dark {
+  --transition-time: 1s;
+
   background-color: $color-background-dark;
+  transition: background-color var(--transition-time);
 
   button.mode-switch {
     color: #eee;
+    transition: color var(--transition-time);
 
     &:hover {
       color: $color-accent;
     }
   }
 
-  .site-header h1 a {
-    color: #eee;
+  #site-header h1 a,
+  #site-footer a{
+    color: #999;
+    transition: color var(--transition-time);
 
     &:hover {
       color: $color-accent;
@@ -24,10 +30,12 @@ body.dark {
 
     h1 {
       color: #eee;
+      transition: color var(--transition-time);
     }
 
     .social-text a {
       color: #999;
+      transition: color var(--transition-time);
 
       &:hover {
         color: $color-accent;
@@ -36,16 +44,7 @@ body.dark {
 
     .social-icon a {
       color: #eee;
-
-      &:hover {
-        color: $color-accent;
-      }
-    }
-  }
-
-  .site-footer {
-    a {
-      color: #eee;
+      transition: color var(--transition-time);
 
       &:hover {
         color: $color-accent;
