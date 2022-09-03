@@ -1,5 +1,5 @@
 /* eslint-disable */
-const darkmode = require('./darkmode.js')
+import darkmode from './darkmode.js';
 /* eslint-enable */
 
 darkmode.init()
