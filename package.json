@@ -14,6 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/itsBen/benediktbenz.git"
   },
+  "engines" : { 
+    "npm" : ">=8.15.0",
+    "node" : ">=16.17.0"
+  },
   "keywords": [
     "webpack",
     "html",
