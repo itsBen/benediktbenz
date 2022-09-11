@@ -39,4 +39,4 @@ module.exports = merge(common, {
     // enable @debug output
     loggingDebug: [],
   },
-})
+});

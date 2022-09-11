@@ -114,4 +114,4 @@ module.exports = merge(common, {
     // open in default browser
     // open: true,
   },
-})
+});

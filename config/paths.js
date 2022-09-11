@@ -21,5 +21,4 @@ module.exports = {
 
   // Static files that get copied to build folder
   public: path.join(__dirname, '..', '/public'),
-}
-
+};
