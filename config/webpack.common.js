@@ -1,119 +1,78 @@
-const {
-  CleanWebpackPlugin
-} = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ImageminWebpWebpackPlugin= require("imagemin-webp-webpack-plugin")
-const ESLintPlugin = require('eslint-webpack-plugin')
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin")
-
-const paths = require('./paths')
-
-const rule = {
-  // JavaScript: Use Babel to transpile JavaScript files
-  js: {
-    test: /\.js$/,
-    use: ['babel-loader']
-  },
-
-  // Images: Copy image files to dist folder
-  images: {
-    test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/i,
-    type: 'asset/resource'
-  },
-
-  // Fonts and SVGs: Inline files
-  fonts: {
-    test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-    type: 'asset/inline'
-  },
-
-  // Pug files
-  pug: {
-    test: /\.pug$/,
-    use: [
-      {
-        loader: 'html-loader',
-        options: {
-          // Disables attributes processing
-          sources: false,
-        },
-      },
-      {
-        loader: 'pug-html-loader',
-      }
-    ]
-  }
-}
+/* eslint-disable */
+const paths = require('../config/paths')
+const loaders = require('../webpack/loaders');
+/* eslint-enable */
 
 module.exports = {
-  // Where webpack looks to start building the bundle
-  entry: [paths.src + '/app.js'],
-
   // Where webpack outputs the assets and bundles
   output: {
-    assetModuleFilename: 'assets/[name][ext]',
-    path: paths.build,
-    filename: '[name].bundle.js',
-    publicPath: '/',
-  },
+    path: paths.dist,
+    publicPath: 'auto',
 
-  // Customize the webpack build process
-  plugins: [
-    // Removes/cleans build folders and unused assets when rebuilding
-    new CleanWebpackPlugin(),
+    // output filename of scripts
+    filename: 'assets/js/[name].[contenthash:8].js',
+    chunkFilename: 'assets/js/[id].[contenthash:8].js',
 
-    // Copies files from target to destination folder
-    new CopyWebpackPlugin({
-      patterns: [{
-        from: paths.public,
-        to: 'assets',
-        globOptions: {
-          ignore: ['*.DS_Store'],
-        },
-        noErrorOnMissing: true,
-      }, ],
-    }),
-
-    new ImageminWebpWebpackPlugin(),
-
-    new HtmlWebpackPlugin({
-      template: paths.src + '/views/index.pug',
-      filename: 'index.html',
-      inject: 'head',
-    }),
-
-    new HtmlWebpackPlugin({
-      template: paths.src + '/views/404.pug',
-      filename: '404.html', // output file
-      inject: 'head',
-    }),
-
-    // ESLint configuration
-    new ESLintPlugin({
-      files: ['.', 'src', 'config'],
-      formatter: 'table',
-    }),
-
-    new FaviconsWebpackPlugin({
-      logo: "./src/images/favicon.png",
-      icons: {
-        twitter: true,
-        windows: true,
-      },
-    }),
-  ],
-
-  // Determine how modules within the project are treated
-  module: {
-    rules: [rule.js, rule.fonts, rule.images, rule.pug],
+    // same as `CleanWebpackPlugin`
+    clean: true,
   },
 
   resolve: {
-    modules: [paths.src, 'node_modules'],
-    extensions: ['.js', '.jsx', '.json'],
+    // aliases used in sources
     alias: {
-      '@': paths.src,
+      Root: paths.root,
+      Src: paths.src.root,
+      Views: paths.src.views,
+      Images: paths.src.images,
+      Fonts: paths.src.fonts,
+      Styles: paths.src.styles,
+      Scripts: paths.src.scripts,
     },
+    preferRelative: true,
+
+    // resolve omitted extensions
+    extensions: ['.js'],
+  },
+
+  // Where webpack looks to start building the bundle
+  entry: {
+    index: './src/views/pages/index.pug',
+    404: './src/views/pages/404.pug',
+  },
+
+  // Determine how modules within the project are treated
+  module: {
+    rules: [
+      // pug
+      loaders.pugLoader({
+        // enable filters only those used in pug
+        embedFilters: {
+          // :escape
+          escape: true,
+          // :code
+          code: {
+            className: 'language-',
+          },
+        },
+      }),
+
+      // styles
+      loaders.sassLoader(),
+
+      // images
+      loaders.imageLoader(),
+
+      // inline images by size (to force inline use the `?inline` query)
+      // ...loaders.inlineImageLoader(2 * 1024),
+
+      // fonts
+      loaders.fontLoader(),
+
+      // generates filename including last directory name
+      // to group fonts by name
+
+      // eslint-disable-next-line max-len
+      // (pathData) => `assets/fonts/${path.basename(path.dirname(pathData.filename))}/[name][ext][query]`
+    ],
   },
 }

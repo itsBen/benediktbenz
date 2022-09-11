@@ -65,7 +65,7 @@ $hamburger-active-hover-opacity: $hamburger-hover-opacity !default;
 .hamburger-inner {
   display: block;
   top: 50%;
-  margin-top: $hamburger-layer-height / -2;
+  margin-top: calc($hamburger-layer-height / -2);
 
   &,
   &::before,
@@ -99,7 +99,7 @@ $hamburger-active-hover-opacity: $hamburger-hover-opacity !default;
 // ==================================================
 .hamburger--slider {
   .hamburger-inner {
-    top: $hamburger-layer-height / 2;
+    top: calc($hamburger-layer-height / 2);
 
     &::before {
       top: $hamburger-layer-height + $hamburger-layer-spacing;
@@ -122,7 +122,7 @@ $hamburger-active-hover-opacity: $hamburger-hover-opacity !default;
       &::before {
         transform: rotate(-45deg)
           translate3d(
-            $hamburger-layer-width / -7,
+            calc($hamburger-layer-width / -7),
             $hamburger-layer-spacing * -1,
             0
           );
