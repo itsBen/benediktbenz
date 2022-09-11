@@ -1,14 +1,10 @@
 /* eslint-disable */
-const { merge } = require('webpack-merge')
+const { merge } = require('webpack-merge');
 
-const {
-  CleanWebpackPlugin,
-} = require('clean-webpack-plugin')
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const PugPlugin = require('pug-plugin')
+const PugPlugin = require('pug-plugin');
 
-const paths = require('../config/paths')
-const common = require('./webpack.common')
+const paths = require('../config/paths');
+const common = require('./webpack.common');
 /* eslint-enable */
 
 module.exports = merge(common, {
@@ -17,10 +13,6 @@ module.exports = merge(common, {
 
   // Customize the webpack build process
   plugins: [
-
-    // Removes/cleans build folders and unused assets when rebuilding
-    new CleanWebpackPlugin(),
-
     new PugPlugin({
       verbose: false, // output information about the process to console
       pretty: false, // output formatted HTML
@@ -28,14 +20,6 @@ module.exports = merge(common, {
       extractCss: {
         // output filename of styles
         filename: 'assets/css/[name].[contenthash:8].css',
-      },
-    }),
-
-    new FaviconsWebpackPlugin({
-      logo: './src/assets/images/favicon.png',
-      icons: {
-        twitter: true,
-        windows: true,
       },
     }),
   ],

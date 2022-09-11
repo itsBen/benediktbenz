@@ -1,11 +1,10 @@
 /* eslint-disable */
-const { merge } = require('webpack-merge')
+const { merge } = require('webpack-merge');
 
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const PugPlugin = require('pug-plugin')
+const PugPlugin = require('pug-plugin');
 
-const paths = require('../config/paths')
-const common = require('./webpack.common')
+const paths = require('../config/paths');
+const common = require('./webpack.common');
 /* eslint-enable */
 
 module.exports = merge(common, {
@@ -22,14 +21,6 @@ module.exports = merge(common, {
       extractCss: {
         // output filename of styles
         filename: 'assets/css/[name].[contenthash:8].css',
-      },
-    }),
-
-    new FaviconsWebpackPlugin({
-      logo: './src/assets/images/favicon.png',
-      icons: {
-        twitter: true,
-        windows: true,
       },
     }),
   ],
