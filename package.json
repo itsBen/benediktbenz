@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=development webpack serve --config webpack/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.js",
     "preview": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.js",
-    "test": "echo 'No test specified' && exit 1",
+    "test": "echo 'No test specified' && exit 0",
     "lint": "eslint . src config || true"
   },
   "repository": {
