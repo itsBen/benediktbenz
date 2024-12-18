@@ -5,7 +5,7 @@ body.dark {
   transition: background-color var(--transition-time);
 
   button.mode-switch {
-    color: #eee;
+    color: $color-font-light;
     transition: color var(--transition-time);
 
     &:hover {
@@ -15,7 +15,7 @@ body.dark {
 
   #site-header h1 a,
   #site-footer a{
-    color: #999;
+    color: #eee;
     transition: color var(--transition-time);
 
     &:hover {
@@ -34,7 +34,7 @@ body.dark {
     }
 
     .social-text a {
-      color: #999;
+      color: $color-font-light;
       transition: color var(--transition-time);
 
       &:hover {
@@ -43,7 +43,7 @@ body.dark {
     }
 
     .social-icon a {
-      color: #eee;
+      color: $color-font-light;
       transition: color var(--transition-time);
 
       &:hover {

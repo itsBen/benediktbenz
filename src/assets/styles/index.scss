@@ -2,9 +2,11 @@
 @import 'vendor/reset';
 
 // Modules and Variables
-@import 'partials/base';
-@import 'partials/mixins';
+@import 'settings/colors';
+@import 'settings/fonts';
+@import 'settings/mixins';
 
+//
 @import 'partials/mode-light';
 @import 'partials/mode-dark';
 
