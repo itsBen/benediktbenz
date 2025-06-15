@@ -89,7 +89,7 @@ module.exports = {
 
       prefix: 'assets/favicon/',
 
-      icons: {
+      favicons: {
         twitter: true,
         windows: true,
       },
