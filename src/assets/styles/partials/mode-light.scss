@@ -1,5 +1,7 @@
+@import '../settings/colors';
+
 body {
   --transition-time: 1s;
-  background: $color-background-light;
+  background: $color-background--light;
   transition: background-color var(--transition-time);
 }

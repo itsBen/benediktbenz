@@ -4,7 +4,7 @@
 }
 
 body {
-  background: $color-background-light;
+  background: $color-background--light;
 
   font-family: $base-font-family;
   font-weight: $base-font-weight;
@@ -13,7 +13,7 @@ body {
 }
 
 a {
-  color: $color-font-default;
+  color: $color-font-primary--light;
   text-decoration: none;
   outline: none;
 

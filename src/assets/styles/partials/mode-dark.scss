@@ -1,11 +1,13 @@
+@import '../settings/colors';
+
 body.dark {
   --transition-time: 1s;
 
-  background-color: $color-background-dark;
+  background-color: $color-background--dark;
   transition: background-color var(--transition-time);
 
   button.mode-switch {
-    color: $color-font-light;
+    color: $color-font-primary--light;
     transition: color var(--transition-time);
 
     &:hover {
@@ -14,7 +16,7 @@ body.dark {
   }
 
   #site-header h1 a,
-  #site-footer a{
+  #site-footer a {
     color: #eee;
     transition: color var(--transition-time);
 
@@ -34,7 +36,7 @@ body.dark {
     }
 
     .social-text a {
-      color: $color-font-light;
+      color: $color-font-primary--light;
       transition: color var(--transition-time);
 
       &:hover {
@@ -43,7 +45,7 @@ body.dark {
     }
 
     .social-icon a {
-      color: $color-font-light;
+      color: $color-font-primary--light;
       transition: color var(--transition-time);
 
       &:hover {
