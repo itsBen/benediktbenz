@@ -1,3 +1,5 @@
+@use '../settings/fonts' as fonts;
+
 #site-header {
   position: sticky;
   top: 0;
@@ -12,7 +14,7 @@
     margin: 0;
 
     a {
-      font-weight: $bold;
+      font-weight: fonts.$bold;
     }
   }
 

@@ -12,20 +12,22 @@
  * default: on phone aka mobile first
  */
 
+@use '../settings/mixins' as mixins;
+
 button.hamburger {
-  @include show;
+  @include mixins.show;
 }
 
 nav.site-nav {
-  @include hide;
+  @include mixins.hide;
 }
 
 @media screen and (min-width: 576px) {
   nav.site-nav {
-    @include show;
+    @include mixins.show;
   }
 
   button.hamburger {
-    @include hide;
+    @include mixins.hide;
   }
 }

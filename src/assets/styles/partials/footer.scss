@@ -1,11 +1,14 @@
+@use '../settings/colors' as colors;
+@use '../settings/mixins';
+
 #site-footer {
-  @include hide;
+  @include mixins.hide;
   width: 100%;
   margin: 0 0 20px 0;
   z-index: 70;
 
   @media screen and (min-width: 576px) {
-    @include show;
+    @include mixins.show;
     position: sticky;
     bottom: 10px;
     height: 40px;
@@ -35,11 +38,13 @@
         margin: 0 0 0 20px;
       }
 
-      font-size: 1.5em;
+      & {
+        font-size: 1.5em;
+      }
     }
   }
 
   .copy {
-    color: $color-font-primary--light;
+    color: colors.$color-font-primary--light;
   }
 }

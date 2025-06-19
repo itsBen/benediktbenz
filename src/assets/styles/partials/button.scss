@@ -1,3 +1,6 @@
+@use '../settings/colors' as colors;
+@use '../settings/fonts' as fonts;
+
 /*
  * Reset button styles
  * source: https://css-tricks.com/overriding-default-button-styles/
@@ -9,19 +12,20 @@ button {
   margin: 0;
   background: none;
   text-decoration: none;
-  font-family: $base-font-family;
+  font-family: fonts.$base-font-family;
   font-size: 1rem;
   cursor: pointer;
   text-align: center;
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
 
   // remove blue box around button when click it on mobile
   -webkit-tap-highlight-color: transparent;
 }
 
 button:hover {
-  color: $color-accent;
+  color: colors.$color-accent;
   //background: $color-accent;
 }
 
@@ -37,8 +41,8 @@ button:active {
 
 .btn {
   text-transform: uppercase;
-  font-weight: $bold;
-  color: $color-font-primary--light;
+  font-weight: fonts.$bold;
+  color: colors.$color-font-primary--light;
   background-color: transparent;
   outline: 0;
 }
@@ -63,6 +67,6 @@ button:active {
 }
 
 .btn-full-accent {
-  border: 2px solid $color-accent;
-  color: $color-accent;
+  border: 2px solid colors.$color-accent;
+  color: colors.$color-accent;
 }

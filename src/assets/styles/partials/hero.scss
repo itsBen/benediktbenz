@@ -1,3 +1,7 @@
+@use '../settings/colors' as colors;
+@use '../settings/fonts' as fonts;
+@use '../settings/mixins' as mixins;
+
 .hero-container {
   height: 100vh;
 
@@ -12,12 +16,13 @@
     margin-bottom: -40px;
   }
 
-  justify-content: center;
-
-  width: 100%;
+  & {
+    justify-content: center;
+    width: 100%;
+  }
 
   img {
-    border: 1px solid $color-font-primary--light;
+    border: 1px solid colors.$color-font-primary--light;
   }
 }
 
@@ -35,18 +40,18 @@
     padding: 20px 0 0 0;
     text-align: center;
     font-size: 1.5em;
-    font-weight: $bold;
+    font-weight: fonts.$bold;
   }
 
   .social-text {
-    @include hide;
+    @include mixins.hide;
 
     li {
       margin: 0 10px;
       text-transform: uppercase;
 
       &:hover {
-        color: $color-accent;
+        color: colors.$color-accent;
       }
 
       &:first-child {
@@ -56,7 +61,7 @@
   }
 
   .social-icon {
-    @include show;
+    @include mixins.show;
     display: inline-flex;
     justify-content: center;
 
@@ -78,12 +83,12 @@
     }
 
     .social-text {
-      @include show;
+      @include mixins.show;
       display: inline-flex;
     }
 
     .social-icon {
-      @include hide;
+      @include mixins.hide;
     }
   }
 

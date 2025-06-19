@@ -1,24 +1,27 @@
+@use '../settings/colors' as colors;
+@use '../settings/fonts' as fonts;
+
 * {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
 
 body {
-  background: $color-background--light;
+  background: colors.$color-background--light;
 
-  font-family: $base-font-family;
-  font-weight: $base-font-weight;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
+  font-family: fonts.$base-font-family;
+  font-weight: fonts.$base-font-weight;
+  font-size: fonts.$base-font-size;
+  line-height: fonts.$base-line-height;
 }
 
 a {
-  color: $color-font-primary--light;
+  color: colors.$color-font-primary--light;
   text-decoration: none;
   outline: none;
 
   &:hover {
-    color: $color-accent;
+    color: colors.$color-accent;
   }
 }
 
