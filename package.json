@@ -1,59 +1,26 @@
 {
   "name": "benediktbenz",
-  "version": "1.0.0",
-  "description": "Personal website",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve --config webpack/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.js",
-    "preview": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.js",
-    "test": "echo 'No test specified' && exit 0",
-    "lint": "eslint . src config || true"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/itsBen/benediktbenz.git"
-  },
-  "engines": {
-    "npm": ">=8.15.0",
-    "node": ">=16.17.0"
-  },
-  "keywords": [
-    "webpack",
-    "html",
-    "scss",
-    "style",
-    "js",
-    "svg",
-    "responsive",
-    "portfolio",
-    "personal portfolio"
-  ],
-  "author": "Benedikt Benz <benedikt.benz@outlook.com> (https://benediktbenz.com)",
-  "license": "MIT",
-  "peerDependencies": {
-    "webpack": ">=5.32.0"
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.4",
-    "@babel/preset-env": "^7.27.2",
-    "babel-loader": "^10.0.0",
-    "cross-env": "^7.0.3",
-    "css-loader": "^7.1.2",
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.31.0",
-    "favicons": "^7.2.0",
-    "favicons-webpack-plugin": "^6.0.1",
-    "prettier": "^3.5.3",
-    "pug-plugin": "^6.0.0",
-    "responsive-loader": "^3.1.2",
-    "sass": "^1.89.2",
-    "sass-loader": "^16.0.5",
-    "sharp": "^0.34.2",
-    "webpack": "^5.99.9",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.2",
-    "webpack-merge": "^6.0.1"
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

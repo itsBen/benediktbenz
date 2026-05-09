@@ -1,7 +1,0 @@
-@use '../settings/colors' as colors;
-
-body {
-  --transition-time: 1s;
-  background: colors.$color-background--light;
-  transition: background-color var(--transition-time);
-}

@@ -1,69 +1,36 @@
-# benediktbenz
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> Minimal Webpack 5 based personal website.
+## Getting Started
 
-[![Build Status](https://travis-ci.com/itsBen/benediktbenz.svg?branch=main)](https://travis-ci.com/github/itsBen/benediktbenz)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/2a89a8dd-e6eb-494b-b685-58cc6cd7e837/deploy-status)](https://app.netlify.com/sites/stupefied-darwin-cd96c2/deploys)
-
-[**Live Site**](https://benediktbenz.com)
-
-## Usage
-
-### Install
+First, run the development server:
 
 ```bash
-# Install dependencies
-
- $ npm install
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### Start local dev server (development mode)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-# Start development server at port 8080
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
- $ npm run start
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### Build distribution files (production mode)
+## Learn More
 
-```bash
-# Build app for production (gets output in the 'dist' directory)
+To learn more about Next.js, take a look at the following resources:
 
- $ npm run build
-```
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### Preview the build in browser (production mode)
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-```bash
- npm run preview
-```
+## Deploy on Vercel
 
-### Lint
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-```bash
- npm run lint
-```
-
-### Test
-
-```bash
- npm run test
-```
-
-## Credits
-
-This project uses following 3rd party packages:
-
-- <https://jonsuh.com/hamburgers/>
-- <a href="https://ionicons.com/" target="_blank">Ionicons</a>
-- <a href="https://github.com/webdiscus/pug-plugin" target="_blank">pug-loader</a>
-
-## Author
-
-> [benediktbenz.com](https://www.benediktbenz.com) &nbsp;&middot;&nbsp;
-> GitHub [@itsBen](https://github.com/itsben)
-
-## License
-
-This project is open source and available under the [MIT License](https://github.com/itsBen/benediktbenz/blob/master/LICENCE.md).
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
