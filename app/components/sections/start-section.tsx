@@ -92,7 +92,7 @@ export default function StartSection() {
     >
       <div className="hero-center">
         <div className="relative overflow-hidden rounded-full border border-[var(--color-border)]">
-          <div className="h-[180px] w-[180px] md:h-[220px] md:w-[220px]">
+          <div className="h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] lg:h-[220px] lg:w-[220px]">
             <Image
               src="https://github.com/itsBen.png?size=400"
               alt="Profile photo of Benedikt Benz"

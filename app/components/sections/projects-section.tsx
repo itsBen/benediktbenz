@@ -41,7 +41,7 @@ export default function ProjectsSection() {
       title="Selected Projects"
       copy="Placeholder projects for now, represented as reusable portfolio cards."
     >
-      <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:gap-5 md:mt-8 md:grid-cols-2 lg:gap-6 xl:grid-cols-3">
         {projects.map((project) => (
           <article key={project.name} className="project-card">
             <div className="project-shot">

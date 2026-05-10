@@ -14,7 +14,7 @@ export default function PageHeader({
   const showFullName = activeSection !== 'start';
 
   return (
-    <header className="site-header fixed inset-x-0 top-0 z-40 px-6 py-5 md:px-12">
+    <header className="site-header fixed inset-x-0 top-0 z-40 px-4 py-4 md:px-6 lg:px-12">
       <div className="header-shell mx-auto flex w-full max-w-6xl items-center justify-between">
         <a
           href="#start"
