@@ -4,9 +4,26 @@ import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { sectionMotion } from './section-motion';
 
+const titleMotion = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+  },
+};
+
+const titleHighlightMotion = {
+  hidden: { scaleX: 0 },
+  visible: {
+    scaleX: 1,
+    transition: {
+      duration: 0.42,
+      delay: 0.1,
+    },
+  },
+};
+
 type SectionLayoutProps = {
   id: string;
-  kicker: string;
   title: string;
   copy: string;
   children: ReactNode;
@@ -17,7 +34,6 @@ type SectionLayoutProps = {
 
 export default function SectionLayout({
   id,
-  kicker,
   title,
   copy,
   children,
@@ -41,8 +57,26 @@ export default function SectionLayout({
       whileInView="visible"
       viewport={{ once: true, amount: viewportAmount }}
     >
-      <p className="section-kicker">{kicker}</p>
-      <h2 className="section-title">{title}</h2>
+      <motion.h2
+        className="section-title"
+        variants={titleMotion}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.7 }}
+      >
+        <span className="section-title-highlight-wrap">
+          <motion.span
+            className="section-title-highlight-bg"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.7 }}
+            variants={titleHighlightMotion}
+          />
+          <span className="section-title-highlight-text">
+            {title}
+          </span>
+        </span>
+      </motion.h2>
       <p className={descriptionClassName}>{copy}</p>
       {children}
     </motion.section>

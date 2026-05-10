@@ -241,7 +241,6 @@ export default function TechStackSection() {
   return (
     <SectionLayout
       id="tech"
-      kicker="Section 1"
       title="Tech Stack"
       copy="A grouped view of the areas I work across most, with hover details for the tools and frameworks behind each one."
     >

@@ -37,7 +37,6 @@ export default function ProjectsSection() {
   return (
     <SectionLayout
       id="projects"
-      kicker="Section 2"
       title="Selected Projects"
       copy="Placeholder projects for now, represented as reusable portfolio cards."
     >

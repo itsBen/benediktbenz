@@ -3,11 +3,14 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import LocationPulse from '../location-pulse';
 import { sectionMotion } from '../shared/section-motion';
 
 type IntroToken = {
   text: string;
   variant?: 'accent-box';
+  href?: string;
+  ariaLabel?: string;
 };
 
 const introTypingIntervalMs = 18;
@@ -25,7 +28,12 @@ const introTokens: IntroToken[] = [
   },
   { text: 'gym', variant: 'accent-box' },
   { text: ' and spending time ' },
-  { text: 'surfing', variant: 'accent-box' },
+  {
+    text: 'surfing',
+    variant: 'accent-box',
+    href: '#surf-map',
+    ariaLabel: 'Jump to surf map section',
+  },
   { text: '.' },
 ];
 
@@ -61,6 +69,7 @@ export default function StartSection() {
 
     return reducedMotion ? introLength : 0;
   });
+  const [showCuriosity, setShowCuriosity] = useState(false);
 
   useEffect(() => {
     if (typedIntroChars >= introLength) {
@@ -81,20 +90,35 @@ export default function StartSection() {
     return () => window.clearInterval(timer);
   }, [typedIntroChars]);
 
+  useEffect(() => {
+    if (typedIntroChars < introLength) {
+      return;
+    }
+
+    const revealTimer = window.setTimeout(() => {
+      setShowCuriosity(true);
+    }, 320);
+
+    return () => window.clearTimeout(revealTimer);
+  }, [typedIntroChars]);
+
+  const shouldShowCuriosity =
+    typedIntroChars >= introLength && showCuriosity;
+
   return (
     <motion.section
       id="start"
-      className="section-shell section-hero"
+      className="section-shell section-hero start-section"
       variants={sectionMotion}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="hero-center">
-        <div className="relative overflow-hidden rounded-full border border-[var(--color-border)]">
+      <div className="start-hero-layout">
+        <div className="start-photo-shell relative overflow-hidden rounded-full border border-[var(--color-border)]">
           <div className="h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] md:h-[180px] md:w-[180px] lg:h-[220px] lg:w-[220px]">
             <Image
-              src="https://github.com/itsBen.png?size=400"
+              src="/benedikt-benz.jpg"
               alt="Profile photo of Benedikt Benz"
               width={400}
               height={400}
@@ -104,62 +128,113 @@ export default function StartSection() {
           </div>
         </div>
 
-        <div className="space-y-2 text-left">
-          <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
-            Benedikt Benz
-          </h1>
-          <div className="flex items-center gap-4 text-sm uppercase tracking-[0.09em]">
-            <a
-              href="https://www.linkedin.com/in/benediktbenz"
-              target="_blank"
-              rel="noreferrer"
-              className="anchor-link"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/itsBen"
-              target="_blank"
-              rel="noreferrer"
-              className="anchor-link"
-            >
-              GitHub
-            </a>
+        <div className="start-content-block">
+          <div className="start-identity text-left">
+            <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
+              Benedikt Benz
+            </h1>
+            <LocationPulse />
+            <div className="start-links text-sm uppercase tracking-[0.09em]">
+              <a
+                href="https://www.linkedin.com/in/benediktbenz"
+                target="_blank"
+                rel="noreferrer"
+                className="anchor-link"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/itsBen"
+                target="_blank"
+                rel="noreferrer"
+                className="anchor-link"
+              >
+                GitHub
+              </a>
+            </div>
           </div>
+
+          <p className="cli-intro start-intro" aria-live="polite">
+            {introTokenRanges.map((token, index) => {
+              const visibleCharCount = Math.max(
+                0,
+                Math.min(
+                  token.text.length,
+                  typedIntroChars - token.start,
+                ),
+              );
+
+              if (visibleCharCount === 0) {
+                return null;
+              }
+
+              return token.href ? (
+                <a
+                  key={`${token.text}-${index}`}
+                  href={token.href}
+                  aria-label={token.ariaLabel}
+                  className="cli-accent-box cli-accent-link"
+                >
+                  {token.text.slice(0, visibleCharCount)}
+                </a>
+              ) : (
+                <span
+                  key={`${token.text}-${index}`}
+                  className={
+                    token.variant === 'accent-box'
+                      ? 'cli-accent-box'
+                      : undefined
+                  }
+                >
+                  {token.text.slice(0, visibleCharCount)}
+                </span>
+              );
+            })}
+            <span className="cli-cursor" aria-hidden="true">
+              |
+            </span>
+          </p>
         </div>
       </div>
 
-      <p className="cli-intro" aria-live="polite">
-        {introTokenRanges.map((token, index) => {
-          const visibleCharCount = Math.max(
-            0,
-            Math.min(
-              token.text.length,
-              typedIntroChars - token.start,
-            ),
-          );
-
-          if (visibleCharCount === 0) {
-            return null;
-          }
-
-          return (
-            <span
-              key={`${token.text}-${index}`}
-              className={
-                token.variant === 'accent-box'
-                  ? 'cli-accent-box'
-                  : undefined
-              }
-            >
-              {token.text.slice(0, visibleCharCount)}
-            </span>
-          );
-        })}
-        <span className="cli-cursor" aria-hidden="true">
-          |
-        </span>
-      </p>
+      {shouldShowCuriosity ? (
+        <div className="start-secondary-layout">
+          <div
+            className="start-secondary-spacer"
+            aria-hidden="true"
+          />
+          <motion.div
+            className="curiosity-card mt-10"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+          >
+            <p className="curiosity-kicker">Currently</p>
+            <p className="curiosity-copy">
+              Reading{' '}
+              <a
+                href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/"
+                target="_blank"
+                rel="noreferrer"
+                className="anchor-link"
+              >
+                Designing Data-Intensive Applications
+              </a>
+              . Exploring practical AI + data workflows.
+            </p>
+            <p className="curiosity-keywords">
+              Data Systems · LLM Workflows · Product UX
+            </p>
+          </motion.div>
+        </div>
+      ) : null}
+      <a
+        href="#tech"
+        className="start-scroll-hint"
+        aria-label="Scroll to next section"
+      >
+        scroll
+      </a>
     </motion.section>
   );
 }

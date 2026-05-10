@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import SectionLayout from '../shared/section-layout';
+import { surfedSpots } from '../surf-spots';
 
 const SurfMap = dynamic(() => import('../surf-map'), {
   ssr: false,
@@ -16,10 +17,16 @@ export default function SurfMapSection() {
   return (
     <SectionLayout
       id="surf-map"
-      kicker="Section 3"
-      title="Surf Spots Map"
-      copy="Toggle between places I have already surfed and spots on my list."
+      title="My Surf Journey"
+      copy="I caught my first wave in Matosinhos in 2021. Since then, surfing has become a constant in my life - I try to get in the water as much as I possibly can, wherever the road takes me. Ideally fully remote, board on the roof, embracing the wipeout."
     >
+      <div className="mt-5 flex flex-wrap items-center gap-3 text-sm text-[var(--color-text-muted)]">
+        <span className="tag-pill">Started in 2021</span>
+        <span className="tag-pill">
+          Surfed spots: {surfedSpots.length}
+        </span>
+      </div>
+
       <div className="mt-6 flex flex-wrap items-center gap-3">
         <button
           type="button"
@@ -49,6 +56,19 @@ export default function SurfMapSection() {
       <div className="mt-6">
         <SurfMap mode={mapMode} />
       </div>
+
+      <p className="mt-3 text-xs italic text-[var(--color-text-muted)]">
+        * I am planning to automate my surf tracking, check out{' '}
+        <a
+          href="https://github.com/itsben/benediktbenz/issues/16"
+          target="_blank"
+          rel="noreferrer"
+          className="underline underline-offset-2 hover:text-[var(--color-accent)]"
+        >
+          issue #16
+        </a>
+        .
+      </p>
     </SectionLayout>
   );
 }
