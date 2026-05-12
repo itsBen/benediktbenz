@@ -15,6 +15,6 @@
   publish = "out"
 
   # Default build command.
-  command = "next build && next export"
+  command = "npm run build"
 
 
