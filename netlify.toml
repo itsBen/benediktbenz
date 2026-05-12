@@ -12,17 +12,9 @@
   # a base has not been set. This sample publishes the directory
   # located at the absolute path "root/project/build-output"
 
-  publish = "dist"
+  publish = "out"
 
   # Default build command.
-  command = "npm run build"
+  command = "next build && next export"
 
-# Production context: all deploys from the Production branch
-# set in your site’s Branches settings in the UI will inherit
-# these settings. You can define environment variables
-# here but we recommend using the Netlify UI for sensitive
-# values to keep them out of your source repository.
-[context.production]
-  publish = "dist/"
-  command = "npm run build"
-  environment = { NODE_VERSION = "16.17.0" }
+
