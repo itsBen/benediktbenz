@@ -13,20 +13,22 @@ type IntroToken = {
   ariaLabel?: string;
 };
 
-const introTypingIntervalMs = 18;
+const introTypingIntervalMs = 10;
 
 const introTokens: IntroToken[] = [
   {
     text: 'I am a data engineer focused on building reliable, production-grade data platforms with ',
   },
   {
-    text: 'SQL, Python, Databricks, Apache Spark, and Next.js.',
+    text: 'Databricks, Python, PySpark, SQL and Next.js.',
     variant: 'accent-box',
+    href: '#tech',
+    ariaLabel: 'Jump to tech stack section',
   },
   {
     text: ' My work is increasingly shaped by AI use cases, especially where strong data foundations, high-quality training data, and scalable real-time systems matter. Outside of work, you will usually find me in the ',
   },
-  { text: 'gym', variant: 'accent-box' },
+  { text: 'gym' },
   { text: ' and spending time ' },
   {
     text: 'surfing',
@@ -112,7 +114,7 @@ export default function StartSection() {
       variants={sectionMotion}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.4 }}
     >
       <div className="start-hero-layout">
         <div className="start-photo-shell relative overflow-hidden rounded-full border border-[var(--color-border)]">
@@ -154,80 +156,118 @@ export default function StartSection() {
             </div>
           </div>
 
-          <p className="cli-intro start-intro" aria-live="polite">
-            {introTokenRanges.map((token, index) => {
-              const visibleCharCount = Math.max(
-                0,
-                Math.min(
-                  token.text.length,
-                  typedIntroChars - token.start,
+          <div className="relative">
+            {/* Phantom: reserves the full final height so layout never shifts */}
+            <p
+              className="cli-intro start-intro invisible pointer-events-none select-none"
+              aria-hidden="true"
+            >
+              {introTokens.map((token, i) =>
+                token.href ? (
+                  <a
+                    key={i}
+                    className="cli-accent-box cli-accent-link"
+                  >
+                    {token.text}
+                  </a>
+                ) : (
+                  <span
+                    key={i}
+                    className={
+                      token.variant === 'accent-box'
+                        ? 'cli-accent-box'
+                        : undefined
+                    }
+                  >
+                    {token.text}
+                  </span>
                 ),
-              );
+              )}
+              <span className="cli-cursor">|</span>
+            </p>
 
-              if (visibleCharCount === 0) {
-                return null;
-              }
+            {/* Animated text overlaid on top */}
+            <p
+              className="cli-intro start-intro absolute inset-0"
+              aria-live="polite"
+            >
+              {introTokenRanges.map((token, index) => {
+                const visibleCharCount = Math.max(
+                  0,
+                  Math.min(
+                    token.text.length,
+                    typedIntroChars - token.start,
+                  ),
+                );
 
-              return token.href ? (
-                <a
-                  key={`${token.text}-${index}`}
-                  href={token.href}
-                  aria-label={token.ariaLabel}
-                  className="cli-accent-box cli-accent-link"
-                >
-                  {token.text.slice(0, visibleCharCount)}
-                </a>
-              ) : (
-                <span
-                  key={`${token.text}-${index}`}
-                  className={
-                    token.variant === 'accent-box'
-                      ? 'cli-accent-box'
-                      : undefined
-                  }
-                >
-                  {token.text.slice(0, visibleCharCount)}
-                </span>
-              );
-            })}
-            <span className="cli-cursor" aria-hidden="true">
-              |
-            </span>
-          </p>
+                if (visibleCharCount === 0) {
+                  return null;
+                }
+
+                return token.href ? (
+                  <a
+                    key={`${token.text}-${index}`}
+                    href={token.href}
+                    aria-label={token.ariaLabel}
+                    className="cli-accent-box cli-accent-link"
+                  >
+                    {token.text.slice(0, visibleCharCount)}
+                  </a>
+                ) : (
+                  <span
+                    key={`${token.text}-${index}`}
+                    className={
+                      token.variant === 'accent-box'
+                        ? 'cli-accent-box'
+                        : undefined
+                    }
+                  >
+                    {token.text.slice(0, visibleCharCount)}
+                  </span>
+                );
+              })}
+              <span className="cli-cursor" aria-hidden="true">
+                |
+              </span>
+            </p>
+          </div>
         </div>
       </div>
 
-      {shouldShowCuriosity ? (
-        <div className="start-secondary-layout">
-          <div
-            className="start-secondary-spacer"
-            aria-hidden="true"
-          />
-          <motion.div
-            className="curiosity-card mt-10"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-          >
-            <p className="curiosity-kicker">Currently</p>
-            <p className="curiosity-copy">
-              Reading{' '}
-              <a
-                href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/"
-                target="_blank"
-                rel="noreferrer"
-                className="anchor-link"
-              >
-                Designing Data-Intensive Applications
-              </a>
-              . Exploring practical AI + data workflows.
-            </p>
-            <p className="curiosity-keywords">
-              Data Systems · LLM Workflows · Product UX
-            </p>
-          </motion.div>
-        </div>
-      ) : null}
+      <div className="start-secondary-layout">
+        <div className="start-secondary-spacer" aria-hidden="true" />
+        <motion.div
+          className="curiosity-card mt-10"
+          initial={{ opacity: 0, y: 10 }}
+          animate={
+            shouldShowCuriosity
+              ? { opacity: 1, y: 0 }
+              : { opacity: 0, y: 0 }
+          }
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+          aria-hidden={!shouldShowCuriosity}
+          style={{
+            pointerEvents: shouldShowCuriosity ? undefined : 'none',
+          }}
+        >
+          <p className="curiosity-kicker">Currently</p>
+          <p className="curiosity-copy">
+            Reading{' '}
+            <a
+              href="https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/"
+              target="_blank"
+              rel="noreferrer"
+              className="anchor-link"
+            >
+              Spark: The Definitive Guide
+            </a>
+            . Big Data processing made simple.
+          </p>
+          <p className="curiosity-keywords">
+            Data Systems · LLM Workflows · Pipelines
+          </p>
+        </motion.div>
+      </div>
       <a
         href="#tech"
         className="start-scroll-hint"

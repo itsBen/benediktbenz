@@ -374,6 +374,7 @@ h6,
 .start-intro {
   margin-top: 0.5rem;
   max-width: none;
+  margin-inline: 0;
 }
 
 @media (min-width: 768px) {

@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: 'Benedikt Benz | Portfolio',
   description:
     'Personal one-page portfolio of Benedikt Benz: projects, tech stack, and surf map.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
