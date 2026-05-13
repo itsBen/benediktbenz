@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Website
 
-## Getting Started
+Personal portfolio site for Benedikt Benz, built with Next.js and deployed at [benediktbenz.de](https://benediktbenz.de).
 
-First, run the development server:
+## Technical Features
+
+- Animated hero intro with a typing effect and reduced-motion support
+- Fixed header with theme toggle and active section tracking
+- Section dot navigation for quick jumping between page sections
+- Interactive tech stack cards with hover-expand details
+- Surf map section with a surfed/wishlist toggle and clustered map markers
+- Contact section with social links
+- Netlify-friendly static export setup
+
+## Data Visualizations
+
+- Interactive surf journey map powered by Leaflet and React Leaflet
+- Marker clustering to keep the map readable at multiple zoom levels
+- Toggle between surfed spots and wish list spots
+
+## Tech Stack
+
+The site is built as a single-page portfolio with anchored navigation, animated sections, and an interactive surf map.
+
+- **Core:** Next.js 16.2.6, React 19.2.6, TypeScript
+- **Styling and Motion:** Tailwind CSS 4, Framer Motion
+- **Maps and Media:** Leaflet, React Leaflet, react-icons
+- **Tooling and Deployment:** ESLint, Netlify static export
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Useful scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run lint
+```
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License. See [LICENCE.md](LICENCE.md) for the full text.
