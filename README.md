@@ -1,6 +1,8 @@
 # Personal Website
 
-Personal portfolio site for Benedikt Benz, built with Next.js and deployed at [benediktbenz.de](https://benediktbenz.de).
+Personal portfolio site for Benedikt Benz, built with Next.js and deployed at [benediktbenz.com](https://benediktbenz.com).
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/862d888c-18dc-4ef9-9edd-cec05556a3a7/deploy-status)](https://app.netlify.com/projects/benediktbenz/deploys)
 
 ## Technical Features
 
