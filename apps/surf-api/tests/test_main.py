@@ -1,4 +1,4 @@
-from garmin_service import GarminSurfActivityService
+from service.garmin_activity import GarminActivityService
 
 
 class FakeGarminClient:
@@ -13,7 +13,7 @@ class FakeGarminClient:
         return self.pages_by_start.get(start, [])
 
 
-class StubGarminSurfActivityService(GarminSurfActivityService):
+class StubGarminSurfActivityService(GarminActivityService):
     def __init__(self, fake_client):
         super().__init__(email="test@example.com", password="secret")
         self._fake_client = fake_client

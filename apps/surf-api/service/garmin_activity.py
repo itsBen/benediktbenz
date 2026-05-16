@@ -1,17 +1,15 @@
 import logging
 import os
-from datetime import UTC
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Callable
 
 from garminconnect import Garmin
 from garminconnect.exceptions import GarminConnectConnectionError
 
-
 logger = logging.getLogger(__name__)
 
 
-class GarminSurfActivityService:
+class GarminActivityService:
     """Service for fetching surfing activities from Garmin."""
 
     def __init__(
@@ -30,14 +28,12 @@ class GarminSurfActivityService:
         self.mfa_prompt = mfa_prompt or (lambda: input("MFA code: "))
 
     @classmethod
-    def from_env(cls) -> "GarminSurfActivityService":
+    def from_env(cls) -> "GarminActivityService":
         """Construct the service from environment variables."""
         email = os.getenv("GARMIN_CONNECT_EMAIL")
         password = os.getenv("GARMIN_CONNECT_PASSWORD")
         if not email or not password:
-            raise ValueError(
-                "GARMIN_CONNECT_EMAIL and GARMIN_CONNECT_PASSWORD must be set"
-            )
+            raise ValueError("GARMIN_CONNECT_EMAIL and GARMIN_CONNECT_PASSWORD must be set")
         return cls(email=email, password=password)
 
     def _connect(self) -> Garmin:
@@ -50,19 +46,14 @@ class GarminSurfActivityService:
         except GarminConnectConnectionError as exc:
             if self._is_tls_error(str(exc)):
                 logger.error("TLS verification failed while connecting to Garmin.")
-                logger.error(
-                    "If you are behind a corporate proxy, set GARMIN_CA_BUNDLE to your root CA PEM file."
-                )
+                logger.error("If you are behind a corporate proxy, set GARMIN_CA_BUNDLE to your root CA PEM file.")
                 raise SystemExit(2) from exc
             logger.exception("Garmin login failed")
             raise
 
     @staticmethod
     def _is_tls_error(message: str) -> bool:
-        return (
-            "CERTIFICATE_VERIFY_FAILED" in message
-            or "SSL certificate problem" in message
-        )
+        return "CERTIFICATE_VERIFY_FAILED" in message or "SSL certificate problem" in message
 
     def get_surf_activities(self, page_size: int = 100) -> list[dict]:
         """Return all surfing activities from Garmin."""
@@ -78,7 +69,6 @@ class GarminSurfActivityService:
             "activities": surfing_activities,
         }
 
-
     def _configure_tls_trust(self) -> str | None:
         """Configure CA trust for Garmin API clients.
 
@@ -93,9 +83,7 @@ class GarminSurfActivityService:
 
         ca_bundle = os.path.expanduser(ca_bundle)
         if not os.path.isfile(ca_bundle):
-            raise FileNotFoundError(
-                f"GARMIN_CA_BUNDLE points to a missing file: {ca_bundle}"
-            )
+            raise FileNotFoundError(f"GARMIN_CA_BUNDLE points to a missing file: {ca_bundle}")
 
         # requests + urllib3
         os.environ["REQUESTS_CA_BUNDLE"] = ca_bundle
@@ -106,8 +94,7 @@ class GarminSurfActivityService:
         logger.info(f"Configured Garmin TLS trust bundle: {ca_bundle}")
         return ca_bundle
 
-
-    def _normalize_activities(self,raw_activities: dict | list) -> list[dict]:
+    def _normalize_activities(self, raw_activities: dict | list) -> list[dict]:
         """Handle API responses that may be a list or dict wrapper."""
         if isinstance(raw_activities, dict):
             activities = raw_activities.get("activities", [])
@@ -115,8 +102,7 @@ class GarminSurfActivityService:
             activities = raw_activities
         return [activity for activity in activities if isinstance(activity, dict)]
 
-
-    def _query_surfing_activities(self,client: Garmin, page_size: int = 100) -> list[dict]:
+    def _query_surfing_activities(self, client: Garmin, page_size: int = 100) -> list[dict]:
         """Query all surfing activities and return only requested fields."""
         start = 0
         surfing_activities: list[dict] = []
