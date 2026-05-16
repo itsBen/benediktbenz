@@ -1,5 +1,5 @@
 {
-  "count": 19,
+  "count": 18,
   "includeVisitCount": true,
   "spots": [
     {
@@ -48,14 +48,9 @@
       "longitude": -9.201
     },
     {
-      "name": "Praia de Matosinhos (first surf spot ever)",
+      "name": "Praia de Matosinhos",
       "latitude": 41.181,
       "longitude": -8.689
-    },
-    {
-      "name": "San Felipe",
-      "latitude": 28.206,
-      "longitude": -15.543
     },
     {
       "name": "Spot 39.360, -9.360",
@@ -98,5 +93,5 @@
       "longitude": 80.4302
     }
   ],
-  "timestampUtcExtractedAt": "2026-05-16T19:53:26.496002+00:00"
+  "timestampUtcExtractedAt": "2026-05-16T20:07:39.214431+00:00"
 }
