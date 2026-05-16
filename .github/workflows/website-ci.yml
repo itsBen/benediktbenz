@@ -1,0 +1,50 @@
+name: Website CI
+
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+    paths:
+      - 'apps/website/**'
+      - '.github/workflows/website-ci.yml'
+  pull_request:
+    paths:
+      - 'apps/website/**'
+      - '.github/workflows/website-ci.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  website-quality:
+    name: Website Lint and Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: apps/website
+
+      - name: Lint
+        run: npm run lint
+        working-directory: apps/website
+
+      - name: Build
+        run: npm run build
+        working-directory: apps/website

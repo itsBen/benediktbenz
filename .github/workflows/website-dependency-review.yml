@@ -1,13 +1,11 @@
-name: Dependency Review
+name: Website Dependency Review
 
 on:
   pull_request:
     paths:
-      - 'apps/**/package.json'
-      - 'apps/**/package-lock.json'
-      - 'apps/**/pyproject.toml'
-      - 'apps/**/uv.lock'
-      - '.github/workflows/dependency-review.yml'
+      - 'apps/website/package.json'
+      - 'apps/website/package-lock.json'
+      - '.github/workflows/website-dependency-review.yml'
 
 permissions:
   contents: read

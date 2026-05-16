@@ -1,10 +1,16 @@
-name: CodeQL
+name: Website CodeQL
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'apps/website/**'
+      - '.github/workflows/website-codeql.yml'
   pull_request:
+    paths:
+      - 'apps/website/**'
+      - '.github/workflows/website-codeql.yml'
   schedule:
     - cron: '17 3 * * 1'
 
@@ -15,18 +21,9 @@ permissions:
 
 jobs:
   analyze:
-    name: Analyze (${{ matrix.language }})
+    name: Analyze (javascript-typescript)
     runs-on: ubuntu-latest
     timeout-minutes: 30
-
-    strategy:
-      fail-fast: false
-      matrix:
-        language:
-          - javascript-typescript
-          # Python CodeQL analyzes source directly; no uv dependency install is required here
-          # unless you generate code during build.
-          - python
 
     steps:
       - name: Checkout
@@ -35,10 +32,9 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: ${{ matrix.language }}
+          languages: javascript-typescript
 
       - name: Setup Node
-        if: matrix.language == 'javascript-typescript'
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -46,12 +42,10 @@ jobs:
           cache-dependency-path: apps/website/package-lock.json
 
       - name: Install dependencies
-        if: matrix.language == 'javascript-typescript'
         run: npm ci
         working-directory: apps/website
 
       - name: Autobuild
-        if: matrix.language == 'javascript-typescript'
         uses: github/codeql-action/autobuild@v3
 
       - name: Perform CodeQL Analysis
