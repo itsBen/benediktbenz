@@ -24,7 +24,9 @@ jobs:
       matrix:
         language:
           - javascript-typescript
-          # - python
+          # Python CodeQL analyzes source directly; no uv dependency install is required here
+          # unless you generate code during build.
+          - python
 
     steps:
       - name: Checkout
