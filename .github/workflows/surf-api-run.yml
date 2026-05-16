@@ -1,0 +1,84 @@
+name: Get latest surf spots data and deploy to Netlify
+description: This workflow runs the surf API to fetch the latest surf spots data, commits it to the repository, and triggers a Netlify deployment.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 5 1 * *' # Runs monthly on day 1 at 5:00 UTC
+
+permissions:
+  contents: write
+
+concurrency:
+  group: surf-api-run-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-surf-api:
+    name: Refresh Surf Spots Data
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Validate required secrets
+        env:
+          GARMIN_CONNECT_EMAIL: ${{ secrets.GARMIN_CONNECT_EMAIL }}
+          GARMIN_CONNECT_PASSWORD: ${{ secrets.GARMIN_CONNECT_PASSWORD }}
+        run: |
+          if [ -z "$GARMIN_CONNECT_EMAIL" ] || [ -z "$GARMIN_CONNECT_PASSWORD" ]; then
+            echo "Missing required secrets: GARMIN_CONNECT_EMAIL and/or GARMIN_CONNECT_PASSWORD"
+            exit 1
+          fi
+
+      - name: Sync dependencies
+        run: uv sync --frozen
+        working-directory: apps/surf-api
+
+      - name: Run surf-api export
+        env:
+          GARMIN_CONNECT_EMAIL: ${{ secrets.GARMIN_CONNECT_EMAIL }}
+          GARMIN_CONNECT_PASSWORD: ${{ secrets.GARMIN_CONNECT_PASSWORD }}
+        run: uv run main.py
+        working-directory: apps/surf-api
+
+      - name: Commit and push updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add shared/data/visited_surf_spots.json
+
+          if git diff --cached --quiet; then
+            echo "No surf data changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore(data): refresh visited surf spots"
+          git push
+
+  publish:
+    name: Publish on Netlify
+    needs: run-surf-api
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Publish
+      uses: netlify/actions/build@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
