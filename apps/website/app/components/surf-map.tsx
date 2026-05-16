@@ -52,12 +52,17 @@ export default function SurfMap({ mode }: SurfMapProps) {
         center={defaultCenter}
         zoom={defaultZoom}
         minZoom={2}
-        maxZoom={7}
+        maxZoom={12}
         worldCopyJump
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+        />
+        <TileLayer
+          attribution='<a href="https://www.openaip.net/">openAIP Data</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-NC-SA</a>)'
+          url="https://{s}.tile.maps.openaip.net/geowebcache/service/tms/1.0.0/openaip_basemap@EPSG%3A900913@png/{z}/{x}/{y}.{ext}"
+          ext="png"
         />
         <MarkerClusterLayer
           spots={spots}
