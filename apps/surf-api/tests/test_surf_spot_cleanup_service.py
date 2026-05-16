@@ -25,9 +25,10 @@ def test_build_clean_spots_deduplicates_manual_and_garmin_locations():
         include_visit_count=True,
     )
 
-    assert len(spots) == 1
-    assert spots[0]["name"] == "Weligama SK Town"
-    assert spots[0]["visitCount"] == 3
+    assert spots["count"] == 1
+    assert spots["includeVisitCount"] is True
+    assert spots["spots"][0]["name"] == "Weligama SK Town"
+    assert spots["spots"][0]["visitCount"] == 3
 
 
 def test_build_clean_spots_skips_garmin_activities_without_coordinates():
@@ -46,8 +47,9 @@ def test_build_clean_spots_skips_garmin_activities_without_coordinates():
         include_visit_count=False,
     )
 
-    assert len(spots) == 1
-    assert "visitCount" not in spots[0]
+    assert spots["count"] == 1
+    assert spots["includeVisitCount"] is False
+    assert "visitCount" not in spots["spots"][0]
 
 
 def test_build_clean_spots_includes_count_only_when_enabled():
@@ -66,5 +68,7 @@ def test_build_clean_spots_includes_count_only_when_enabled():
         include_visit_count=True,
     )
 
-    assert "visitCount" not in without_count[0]
-    assert with_count[0]["visitCount"] == 1
+    assert without_count["includeVisitCount"] is False
+    assert with_count["includeVisitCount"] is True
+    assert "visitCount" not in without_count["spots"][0]
+    assert with_count["spots"][0]["visitCount"] == 1

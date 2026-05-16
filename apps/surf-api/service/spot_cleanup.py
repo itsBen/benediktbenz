@@ -32,8 +32,8 @@ class SpotCleanupService:
         self,
         manual_spots: dict,
         garmin_spots: dict,
-        include_visit_count: bool = False,
-    ) -> list[dict]:
+        include_visit_count: bool | None = None,
+    ) -> dict:
         """
         Deduplicate surf spots from manual and Garmin activity data.
 
@@ -41,11 +41,13 @@ class SpotCleanupService:
         :type manual_spots: dict
         :param garmin_spots: The raw activities returned by the Garmin API
         :type garmin_spots: dict
-        :param include_visit_count: Whether to include visit count in the output
-        :type include_visit_count: bool
-        :return: A list of normalized activity dictionaries
-        :rtype: list[dict]
+        :param include_visit_count: Whether to include visit count in the output. If None, use env configuration.
+        :type include_visit_count: bool | None
+        :return: A formatted output dictionary with count, includeVisitCount and spots
+        :rtype: dict
         """
+        include_visit_count_effective = self.include_visit_count if include_visit_count is None else include_visit_count
+
         spots_by_key: dict[tuple[float, float], _SpotAggregate] = {}
 
         for activity in manual_spots.get("activities", []):
@@ -61,26 +63,28 @@ class SpotCleanupService:
                 "latitude": spot.latitude,
                 "longitude": spot.longitude,
             }
-            if include_visit_count:
+            if include_visit_count_effective:
                 clean_spot["visitCount"] = spot.visit_count
             clean_spots.append(clean_spot)
 
         clean_spots.sort(key=lambda spot: (spot["name"].lower(), spot["latitude"], spot["longitude"]))
 
-        return self._format_output(clean_spots)
+        return self._format_output(clean_spots, include_visit_count_effective)
 
-    def _format_output(self, clean_spots: list[dict]) -> list[dict]:
+    def _format_output(self, clean_spots: list[dict], include_visit_count: bool) -> dict:
         """
         Format the cleaned surf spots for output.
 
         :param clean_spots: The list of cleaned surf spots
         :type clean_spots: list[dict]
+        :param include_visit_count: Whether visitCount is included in each spot
+        :type include_visit_count: bool
         :return: A formatted dictionary containing the cleaned surf spots
         :rtype: dict
         """
         formatted_output = {
             "count": len(clean_spots),
-            "includeVisitCount": self.include_visit_count,
+            "includeVisitCount": include_visit_count,
             "spots": clean_spots,
         }
 
