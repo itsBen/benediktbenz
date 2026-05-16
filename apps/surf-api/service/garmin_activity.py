@@ -10,7 +10,9 @@ logger = logging.getLogger(__name__)
 
 
 class GarminActivityService:
-    """Service for fetching surfing activities from Garmin."""
+    """
+    Service for fetching surfing activities from Garmin.
+    """
 
     def __init__(
         self,
@@ -29,7 +31,9 @@ class GarminActivityService:
 
     @classmethod
     def from_env(cls) -> "GarminActivityService":
-        """Construct the service from environment variables."""
+        """
+        Construct the service from environment variables.
+        """
         email = os.getenv("GARMIN_CONNECT_EMAIL")
         password = os.getenv("GARMIN_CONNECT_PASSWORD")
         if not email or not password:
@@ -37,7 +41,9 @@ class GarminActivityService:
         return cls(email=email, password=password)
 
     def _connect(self) -> Garmin:
-        """Login to Garmin and return an authenticated client."""
+        """
+        Login to Garmin and return an authenticated client.
+        """
         client = Garmin(self.email, self.password, prompt_mfa=self.mfa_prompt)
         try:
             client.login(self.token_store)
@@ -56,13 +62,17 @@ class GarminActivityService:
         return "CERTIFICATE_VERIFY_FAILED" in message or "SSL certificate problem" in message
 
     def get_surf_activities(self, page_size: int = 100) -> list[dict]:
-        """Return all surfing activities from Garmin."""
+        """
+        Return all surfing activities from Garmin.
+        """
         client = self._connect()
         raw_activities = self._query_surfing_activities(client, page_size=page_size)
         return self._build_payload(raw_activities)
 
     def _build_payload(self, surfing_activities: list[dict]) -> dict:
-        """Build export payload for a set of surfing activities."""
+        """
+        Build export payload for a set of surfing activities.
+        """
         return {
             "exportedAt": datetime.now(UTC).isoformat(),
             "count": len(surfing_activities),
@@ -70,7 +80,8 @@ class GarminActivityService:
         }
 
     def _configure_tls_trust(self) -> str | None:
-        """Configure CA trust for Garmin API clients.
+        """
+        Configure CA trust for Garmin API clients.
 
         Prefer GARMIN_CA_BUNDLE when present. This is useful on corporate
         networks where TLS traffic is inspected by a custom root certificate.
@@ -95,7 +106,15 @@ class GarminActivityService:
         return ca_bundle
 
     def _normalize_activities(self, raw_activities: dict | list) -> list[dict]:
-        """Handle API responses that may be a list or dict wrapper."""
+        """
+        Handle API responses that may be a list or dict wrapper.
+
+        :param raw_activities: The raw activities returned by the Garmin API
+        :type raw_activities: dict or list
+        :return: A list of normalized activity dictionaries
+        :rtype: list[dict]
+        :rtype: int
+        """
         if isinstance(raw_activities, dict):
             activities = raw_activities.get("activities", [])
         else:
@@ -103,7 +122,16 @@ class GarminActivityService:
         return [activity for activity in activities if isinstance(activity, dict)]
 
     def _query_surfing_activities(self, client: Garmin, page_size: int = 100) -> list[dict]:
-        """Query all surfing activities and return only requested fields."""
+        """
+        Query all surfing activities and return only requested fields.
+
+        :param client: The Garmin client used to fetch activities
+        :type client: Garmin
+        :param page_size: The number of activities to fetch per page
+        :type page_size: int
+        :return: A list of normalized activity dictionaries
+        :rtype: list[dict]
+        """
         start = 0
         surfing_activities: list[dict] = []
 
