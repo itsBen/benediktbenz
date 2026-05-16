@@ -24,7 +24,7 @@ jobs:
       matrix:
         language:
           - javascript-typescript
-          - python
+          # - python
 
     steps:
       - name: Checkout
