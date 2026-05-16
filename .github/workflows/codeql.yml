@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   analyze:
-    name: Analyze (javascript-typescript)
+    name: Analyze (${{ matrix.language }})
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -24,6 +24,7 @@ jobs:
       matrix:
         language:
           - javascript-typescript
+          - python
 
     steps:
       - name: Checkout
@@ -35,15 +36,20 @@ jobs:
           languages: ${{ matrix.language }}
 
       - name: Setup Node
+        if: matrix.language == 'javascript-typescript'
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: apps/website/package-lock.json
 
       - name: Install dependencies
+        if: matrix.language == 'javascript-typescript'
         run: npm ci
+        working-directory: apps/website
 
       - name: Autobuild
+        if: matrix.language == 'javascript-typescript'
         uses: github/codeql-action/autobuild@v3
 
       - name: Perform CodeQL Analysis

@@ -2,6 +2,12 @@ name: Dependency Review
 
 on:
   pull_request:
+    paths:
+      - 'apps/**/package.json'
+      - 'apps/**/package-lock.json'
+      - 'apps/**/pyproject.toml'
+      - 'apps/**/uv.lock'
+      - '.github/workflows/dependency-review.yml'
 
 permissions:
   contents: read
