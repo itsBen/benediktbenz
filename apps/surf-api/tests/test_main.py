@@ -1,7 +1,4 @@
-import json
-from pathlib import Path
-
-from main import _normalize_activities, export_all_surfing_activities
+from garmin_service import GarminSurfActivityService
 
 
 class FakeGarminClient:
@@ -16,19 +13,33 @@ class FakeGarminClient:
         return self.pages_by_start.get(start, [])
 
 
+class StubGarminSurfActivityService(GarminSurfActivityService):
+    def __init__(self, fake_client):
+        super().__init__(email="test@example.com", password="secret")
+        self._fake_client = fake_client
+
+    def _configure_tls_trust(self) -> str | None:
+        return None
+
+    def _connect(self):
+        return self._fake_client
+
+
 def test_normalize_activities_from_dict_wrapper():
+    service = StubGarminSurfActivityService(FakeGarminClient([[]]))
     raw = {"activities": [{"activityId": 1}, {"activityId": 2}]}
-    result = _normalize_activities(raw)
+    result = service._normalize_activities(raw)
     assert result == [{"activityId": 1}, {"activityId": 2}]
 
 
 def test_normalize_activities_from_list_and_skip_non_dict_entries():
+    service = StubGarminSurfActivityService(FakeGarminClient([[]]))
     raw = [{"activityId": 1}, "invalid", 3]
-    result = _normalize_activities(raw)
+    result = service._normalize_activities(raw)
     assert result == [{"activityId": 1}]
 
 
-def test_export_all_surfing_activities_filters_and_writes_output(tmp_path: Path):
+def test_query_surfing_activities_filters_expected_fields():
     pages = [
         [
             {
@@ -58,15 +69,11 @@ def test_export_all_surfing_activities_filters_and_writes_output(tmp_path: Path)
         [],
     ]
     client = FakeGarminClient(pages)
+    service = StubGarminSurfActivityService(client)
 
-    output_path, count = export_all_surfing_activities(client, page_size=2, output_dir=tmp_path)
+    activities = service._query_surfing_activities(client, page_size=2)
 
-    assert count == 2
-    assert output_path.exists()
-
-    payload = json.loads(output_path.read_text(encoding="utf-8"))
-    assert payload["count"] == 2
-    assert payload["activities"] == [
+    assert activities == [
         {
             "activityId": 101,
             "startTimeGMT": "2026-05-01 10:00:00",
@@ -80,3 +87,26 @@ def test_export_all_surfing_activities_filters_and_writes_output(tmp_path: Path)
             "startLongitute": -9.5,
         },
     ]
+
+
+def test_get_surf_activities_returns_payload():
+    pages = [
+        [
+            {
+                "activityId": 201,
+                "startTimeGMT": "2026-05-03 10:00:00",
+                "startLatitude": 40.1,
+                "startLongitude": -8.3,
+                "activityType": {"typeKey": "surfing_v2"},
+            }
+        ],
+        [],
+    ]
+    client = FakeGarminClient(pages)
+    service = StubGarminSurfActivityService(client)
+
+    payload = service.get_surf_activities(page_size=10)
+
+    assert payload["count"] == 1
+    assert len(payload["activities"]) == 1
+    assert payload["activities"][0]["activityId"] == 201
