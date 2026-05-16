@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "cp ../../shared/data/visited_surf_spots.json public/data/",
     "dev": "next dev",
+    "prebuild": "cp ../../shared/data/visited_surf_spots.json public/data/",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

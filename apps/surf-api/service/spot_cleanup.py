@@ -17,10 +17,10 @@ class SpotCleanupService:
     Merge and deduplicate surf spots from manual and Garmin inputs.
     This will combine spots that are close together (based on coordinate rounding) and count visits if enabled.
 
-    Default precision of 3 decimals ≈ ~111 meters accuracy
+    Default precision of 2 decimals ≈ ~1.11 kilometers accuracy
     """
 
-    def __init__(self, coordinate_precision: int = 3) -> None:
+    def __init__(self, coordinate_precision: int = 2) -> None:
         self.coordinate_precision = coordinate_precision
         self.include_visit_count = os.getenv("INCLUDE_SURF_SPOT_VISIT_COUNT", "true").lower() in {
             "1",
@@ -30,17 +30,17 @@ class SpotCleanupService:
 
     def build_clean_spots(
         self,
-        manual_payload: dict,
-        garmin_payload: dict,
+        manual_spots: dict,
+        garmin_spots: dict,
         include_visit_count: bool = False,
     ) -> list[dict]:
         """
         Deduplicate surf spots from manual and Garmin activity data.
 
-        :param manual_payload: The raw activities returned by the manual input
-        :type manual_payload: dict
-        :param garmin_payload: The raw activities returned by the Garmin API
-        :type garmin_payload: dict
+        :param manual_spots: The raw activities returned by the manual input
+        :type manual_spots: dict
+        :param garmin_spots: The raw activities returned by the Garmin API
+        :type garmin_spots: dict
         :param include_visit_count: Whether to include visit count in the output
         :type include_visit_count: bool
         :return: A list of normalized activity dictionaries
@@ -48,10 +48,10 @@ class SpotCleanupService:
         """
         spots_by_key: dict[tuple[float, float], _SpotAggregate] = {}
 
-        for activity in manual_payload.get("activities", []):
+        for activity in manual_spots.get("activities", []):
             self._add_manual_activity(spots_by_key, activity)
 
-        for activity in garmin_payload.get("activities", []):
+        for activity in garmin_spots.get("activities", []):
             self._add_garmin_activity(spots_by_key, activity)
 
         clean_spots: list[dict] = []

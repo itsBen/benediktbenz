@@ -1,0 +1,102 @@
+{
+  "count": 19,
+  "includeVisitCount": true,
+  "spots": [
+    {
+      "name": "Anchor Point",
+      "latitude": 30.544,
+      "longitude": -9.712
+    },
+    {
+      "name": "Enoshima",
+      "latitude": 35.305,
+      "longitude": 139.481
+    },
+    {
+      "name": "Esmoriz",
+      "latitude": 40.958,
+      "longitude": -8.638
+    },
+    {
+      "name": "Hash Point",
+      "latitude": 30.543,
+      "longitude": -9.717
+    },
+    {
+      "name": "La Cicer",
+      "latitude": 28.141,
+      "longitude": -15.431
+    },
+    {
+      "name": "Playa Carrizalillo",
+      "latitude": 15.867,
+      "longitude": -97.058
+    },
+    {
+      "name": "Playa de Paramos",
+      "latitude": 40.964,
+      "longitude": -8.65
+    },
+    {
+      "name": "Playa del Ingles",
+      "latitude": 27.757,
+      "longitude": -15.565
+    },
+    {
+      "name": "Praia das Sereias",
+      "latitude": 38.574,
+      "longitude": -9.201
+    },
+    {
+      "name": "Praia de Matosinhos (first surf spot ever)",
+      "latitude": 41.181,
+      "longitude": -8.689
+    },
+    {
+      "name": "San Felipe",
+      "latitude": 28.206,
+      "longitude": -15.543
+    },
+    {
+      "name": "Spot 39.360, -9.360",
+      "latitude": 39.36074615456164,
+      "longitude": -9.364592134952545
+    },
+    {
+      "name": "Spot 39.360, -9.370",
+      "latitude": 39.361027367413044,
+      "longitude": -9.365795440971851
+    },
+    {
+      "name": "Spot 40.970, -8.650",
+      "latitude": 40.96650003455579,
+      "longitude": -8.652515513822436
+    },
+    {
+      "name": "Spot 5.940, 80.480",
+      "latitude": 5.937697207555175,
+      "longitude": 80.47647206112742
+    },
+    {
+      "name": "Spot 5.940, 80.570",
+      "latitude": 5.939200837165117,
+      "longitude": 80.56876301765442
+    },
+    {
+      "name": "Spot 5.960, 80.690",
+      "latitude": 5.960767976939678,
+      "longitude": 80.68646882660687
+    },
+    {
+      "name": "Spot 5.990, 80.530",
+      "latitude": 5.992389125749469,
+      "longitude": 80.53283725865185
+    },
+    {
+      "name": "Weligama SK Town",
+      "latitude": 5.973,
+      "longitude": 80.4302
+    }
+  ],
+  "timestampUtcExtractedAt": "2026-05-16T19:53:26.496002+00:00"
+}

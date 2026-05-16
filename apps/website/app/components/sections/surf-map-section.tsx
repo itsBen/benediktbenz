@@ -56,19 +56,6 @@ export default function SurfMapSection() {
       <div className="mt-6">
         <SurfMap mode={mapMode} />
       </div>
-
-      <p className="mt-3 text-xs italic text-[var(--color-text-muted)]">
-        * I am planning to automate my surf tracking, check out{' '}
-        <a
-          href="https://github.com/itsben/benediktbenz/issues/16"
-          target="_blank"
-          rel="noreferrer"
-          className="underline underline-offset-2 hover:text-[var(--color-accent)]"
-        >
-          issue #16
-        </a>
-        .
-      </p>
     </SectionLayout>
   );
 }

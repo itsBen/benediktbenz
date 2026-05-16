@@ -3,7 +3,12 @@
 import { useEffect, useMemo } from 'react';
 import L from 'leaflet';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
-import { surfedSpots, type Spot, wishlistSpots } from './surf-spots';
+import {
+  surfedSpotsExtractedAt,
+  surfedSpots,
+  type Spot,
+  wishlistSurfSpots,
+} from './surf-spots';
 
 type SurfMapProps = {
   mode: 'surfed' | 'wishlist';
@@ -11,7 +16,7 @@ type SurfMapProps = {
 
 export default function SurfMap({ mode }: SurfMapProps) {
   const spots = useMemo(
-    () => (mode === 'surfed' ? surfedSpots : wishlistSpots),
+    () => (mode === 'surfed' ? surfedSpots : wishlistSurfSpots),
     [mode],
   );
 
@@ -60,6 +65,15 @@ export default function SurfMap({ mode }: SurfMapProps) {
           clusterIcon={clusterIcon}
         />
       </MapContainer>
+      <p className="mt-3 text-xs italic text-[var(--color-text-muted)]">
+        I am tracking my surfspots via Garmin, last updated at{' '}
+        {surfedSpotsExtractedAt.toLocaleString('en-GB', {
+          timeZone: 'UTC',
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        })}{' '}
+        UTC
+      </p>
     </div>
   );
 }
@@ -95,13 +109,10 @@ function MarkerClusterLayer({
       });
 
       spots.forEach((spot) => {
-        const marker = L.marker(
-          [spot.coordinates[1], spot.coordinates[0]],
-          {
-            icon: markerIcon,
-            title: spot.name,
-          },
-        );
+        const marker = L.marker([spot.latitude, spot.longitude], {
+          icon: markerIcon,
+          title: spot.name,
+        });
 
         marker.bindTooltip(spot.name, {
           direction: 'top',

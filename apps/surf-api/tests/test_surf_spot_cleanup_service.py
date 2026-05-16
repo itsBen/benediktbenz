@@ -20,8 +20,8 @@ def test_build_clean_spots_deduplicates_manual_and_garmin_locations():
 
     service = SpotCleanupService(coordinate_precision=3)
     spots = service.build_clean_spots(
-        manual_payload=manual_payload,
-        garmin_payload=garmin_payload,
+        manual_spots=manual_payload,
+        garmin_spots=garmin_payload,
         include_visit_count=True,
     )
 
@@ -41,8 +41,8 @@ def test_build_clean_spots_skips_garmin_activities_without_coordinates():
 
     service = SpotCleanupService()
     spots = service.build_clean_spots(
-        manual_payload=manual_payload,
-        garmin_payload=garmin_payload,
+        manual_spots=manual_payload,
+        garmin_spots=garmin_payload,
         include_visit_count=False,
     )
 
@@ -56,13 +56,13 @@ def test_build_clean_spots_includes_count_only_when_enabled():
 
     service = SpotCleanupService()
     without_count = service.build_clean_spots(
-        manual_payload=manual_payload,
-        garmin_payload=garmin_payload,
+        manual_spots=manual_payload,
+        garmin_spots=garmin_payload,
         include_visit_count=False,
     )
     with_count = service.build_clean_spots(
-        manual_payload=manual_payload,
-        garmin_payload=garmin_payload,
+        manual_spots=manual_payload,
+        garmin_spots=garmin_payload,
         include_visit_count=True,
     )
 

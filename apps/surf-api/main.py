@@ -1,5 +1,6 @@
 import json
 import logging
+from datetime import UTC, datetime
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -23,21 +24,24 @@ def main():
     data_dir = Path(__file__).resolve().parents[2] / "shared" / "data"
 
     garmin_activity_service = GarminActivityService.from_env()
+    cleanup_service = SpotCleanupService()
+
     spots_surfed_garmin = garmin_activity_service.get_surf_activities()
     spots_surfed_manual = _read_json_file(data_dir / "manual_surfing_activities.json")
 
-    cleanup_service = SpotCleanupService()
     spots_cleaned = cleanup_service.build_clean_spots(
-        manual_payload=spots_surfed_manual,
-        garmin_payload=spots_surfed_garmin,
+        manual_spots=spots_surfed_manual,
+        garmin_spots=spots_surfed_garmin,
     )
+    spots_cleaned["timestampUtcExtractedAt"] = datetime.now(UTC).isoformat()
 
-    clean_output_path = write_json_to_directory(
+    visited_output_path = write_json_to_directory(
         spots_cleaned,
         output_dir=data_dir,
-        filename="clean_surf_spots.json",
+        filename="visited_surf_spots.json",
     )
-    logger.info(f"Saved {spots_cleaned['count']} deduplicated surf spots JSON to: {clean_output_path}")
+
+    logger.info(f"Saved {spots_cleaned['count']} surf spots JSON to: '{visited_output_path}'")
 
 
 if __name__ == "__main__":
