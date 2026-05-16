@@ -70,6 +70,10 @@ shared/
   data/       JSON files shared between the API output and the website build
 ```
 
+## Kudos
+
+- [python-garminconnect](https://github.com/cyberjunky/python-garminconnect/tree/master) - made Garmin Connect integration straightforward
+
 ## License
 
 MIT License. See [LICENCE.md](LICENCE.md) for the full text.
