@@ -1,0 +1,64 @@
+{
+  "activities": [
+    {
+      "name": "Weligama SK Town",
+      "latitude": 5.973,
+      "longitude": 80.4302
+    },
+    {
+      "name": "Lion's Rest",
+      "latitude": 5.97,
+      "longitude": 80.427
+    },
+    {
+      "name": "Enoshima",
+      "latitude": 35.305,
+      "longitude": 139.481
+    },
+    {
+      "name": "Esmoriz",
+      "latitude": 40.958,
+      "longitude": -8.638
+    },
+    {
+      "name": "Playa de Paramos",
+      "latitude": 40.964,
+      "longitude": -8.65
+    },
+    {
+      "name": "Praia de Matosinhos",
+      "latitude": 41.181,
+      "longitude": -8.689
+    },
+    {
+      "name": "Anchor Point",
+      "latitude": 30.544,
+      "longitude": -9.712
+    },
+    {
+      "name": "Hash Point",
+      "latitude": 30.543,
+      "longitude": -9.717
+    },
+    {
+      "name": "La Source",
+      "latitude": 30.54,
+      "longitude": -9.708
+    },
+    {
+      "name": "Playa Carrizalillo",
+      "latitude": 15.867,
+      "longitude": -97.058
+    },
+    {
+      "name": "La Cicer",
+      "latitude": 28.141,
+      "longitude": -15.431
+    },
+    {
+      "name": "Playa del Ingles",
+      "latitude": 27.757,
+      "longitude": -15.565
+    }
+  ]
+}

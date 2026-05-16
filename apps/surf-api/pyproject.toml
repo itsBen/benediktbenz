@@ -1,0 +1,58 @@
+[project]
+name = "surf-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "curl-cffi>=0.15.0",
+    "garminconnect>=0.3.3",
+    "python-dotenv>=1.2.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
+
+[tool.ruff]
+
+
+# Exclude a variety of commonly ignored directories.
+exclude = [".git", ".venv", ".vscode"]
+
+line-length = 120
+indent-width = 4
+
+target-version = "py310"
+src = ["apps/surf-api"]
+
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`), pycodestyle (`E`), pycodestyle warnings (`W`) and isort (`I`).
+select = ["E", "F", "I", "W"]
+ignore = []
+
+per-file-ignores = { "*.ipynb" = ["F821", "E501"] }
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+log_cli = false
+log_cli_level = "INFO"
+markers = [
+  "unit: Isolated test, no Spark, no file I/O. Runs locally.",
+  "integration: Multi-component test, may use Spark and file I/O. Runs locally.",
+  "dlt: Requires Databricks DLT/SDP runtime. Cannot run locally.",
+  "tryouts: Illustrative test, not relevant for CI.",
+  "standalone: Debugging-only test, not relevant for CI.",
+]

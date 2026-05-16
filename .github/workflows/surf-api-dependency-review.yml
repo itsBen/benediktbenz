@@ -1,0 +1,25 @@
+name: Surf API Dependency Review
+
+on:
+  pull_request:
+    paths:
+      - 'apps/surf-api/pyproject.toml'
+      - 'apps/surf-api/uv.lock'
+      - '.github/workflows/surf-api-dependency-review.yml'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Dependency review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: always

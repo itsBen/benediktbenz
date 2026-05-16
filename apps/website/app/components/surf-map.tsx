@@ -3,7 +3,12 @@
 import { useEffect, useMemo } from 'react';
 import L from 'leaflet';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
-import { surfedSpots, type Spot, wishlistSpots } from './surf-spots';
+import {
+  surfedSpotsExtractedAt,
+  surfedSpots,
+  type Spot,
+  wishlistSurfSpots,
+} from './surf-spots';
 
 type SurfMapProps = {
   mode: 'surfed' | 'wishlist';
@@ -11,7 +16,7 @@ type SurfMapProps = {
 
 export default function SurfMap({ mode }: SurfMapProps) {
   const spots = useMemo(
-    () => (mode === 'surfed' ? surfedSpots : wishlistSpots),
+    () => (mode === 'surfed' ? surfedSpots : wishlistSurfSpots),
     [mode],
   );
 
@@ -47,12 +52,16 @@ export default function SurfMap({ mode }: SurfMapProps) {
         center={defaultCenter}
         zoom={defaultZoom}
         minZoom={2}
-        maxZoom={7}
+        maxZoom={12}
         worldCopyJump
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+        />
+        <TileLayer
+          attribution='<a href="https://www.openaip.net/">openAIP Data</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-NC-SA</a>)'
+          url="https://{s}.tile.maps.openaip.net/geowebcache/service/tms/1.0.0/openaip_basemap@EPSG%3A900913@png/{z}/{x}/{y}.png"
         />
         <MarkerClusterLayer
           spots={spots}
@@ -60,6 +69,15 @@ export default function SurfMap({ mode }: SurfMapProps) {
           clusterIcon={clusterIcon}
         />
       </MapContainer>
+      <p className="mt-3 text-xs italic text-[var(--color-text-muted)]">
+        I am tracking my surfspots via Garmin, last updated at{' '}
+        {surfedSpotsExtractedAt.toLocaleString('en-GB', {
+          timeZone: 'UTC',
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        })}{' '}
+        UTC
+      </p>
     </div>
   );
 }
@@ -95,13 +113,10 @@ function MarkerClusterLayer({
       });
 
       spots.forEach((spot) => {
-        const marker = L.marker(
-          [spot.coordinates[1], spot.coordinates[0]],
-          {
-            icon: markerIcon,
-            title: spot.name,
-          },
-        );
+        const marker = L.marker([spot.latitude, spot.longitude], {
+          icon: markerIcon,
+          title: spot.name,
+        });
 
         marker.bindTooltip(spot.name, {
           direction: 'top',

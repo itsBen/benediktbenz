@@ -1,0 +1,51 @@
+name: Surf API CI
+
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+    paths:
+      - 'apps/surf-api/**'
+      - '.github/workflows/surf-api-ci.yml'
+  pull_request:
+    paths:
+      - 'apps/surf-api/**'
+      - '.github/workflows/surf-api-ci.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: surf-api-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  surf-api-quality:
+    name: Surf API Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Sync dependencies (incl. test deps)
+        run: uv sync --dev --frozen
+        working-directory: apps/surf-api
+
+      - name: Run tests
+        run: uv run python -m pytest -q
+        working-directory: apps/surf-api
+
+      - name: Validate Python sources
+        run: uv run python -m compileall .
+        working-directory: apps/surf-api

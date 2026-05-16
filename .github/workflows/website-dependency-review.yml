@@ -1,7 +1,11 @@
-name: Dependency Review
+name: Website Dependency Review
 
 on:
   pull_request:
+    paths:
+      - 'apps/website/package.json'
+      - 'apps/website/package-lock.json'
+      - '.github/workflows/website-dependency-review.yml'
 
 permissions:
   contents: read

@@ -1,10 +1,16 @@
-name: CodeQL
+name: Website CodeQL
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'apps/website/**'
+      - '.github/workflows/website-codeql.yml'
   pull_request:
+    paths:
+      - 'apps/website/**'
+      - '.github/workflows/website-codeql.yml'
   schedule:
     - cron: '17 3 * * 1'
 
@@ -19,12 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language:
-          - javascript-typescript
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,16 +32,18 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: ${{ matrix.language }}
+          languages: javascript-typescript
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: apps/website/package-lock.json
 
       - name: Install dependencies
         run: npm ci
+        working-directory: apps/website
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3
