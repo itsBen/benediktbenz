@@ -86,6 +86,7 @@ jobs:
       with:
         node-version: 24
         cache: "npm"
+        cache-dependency-path: apps/website/package-lock.json
 
     - name: Install Netlify CLI
       run: npm install netlify-cli@23.12.3 -g
