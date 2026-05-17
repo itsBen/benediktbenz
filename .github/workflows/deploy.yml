@@ -1,4 +1,4 @@
-name: Get latest surf spots data and deploy to Netlify
+name: Deploy
 description: This workflow runs the surf API to fetch the latest surf spots data, commits it to the repository, and triggers a Netlify deployment.
 
 on:
