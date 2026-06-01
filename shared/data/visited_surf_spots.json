@@ -58,15 +58,15 @@
     },
     {
       "name": "Spot 39.360, -9.360",
-      "latitude": 39.36074615456164,
-      "longitude": -9.364592134952545,
-      "visitCount": 5
+      "latitude": 39.36090222559869,
+      "longitude": -9.364497670903802,
+      "visitCount": 6
     },
     {
       "name": "Spot 39.360, -9.370",
-      "latitude": 39.361027367413044,
-      "longitude": -9.365795440971851,
-      "visitCount": 10
+      "latitude": 39.36098034493625,
+      "longitude": -9.366074306890368,
+      "visitCount": 13
     },
     {
       "name": "Spot 40.970, -8.650",
@@ -105,5 +105,5 @@
       "visitCount": 2
     }
   ],
-  "timestampUtcExtractedAt": "2026-05-17T12:56:53.066441+00:00"
+  "timestampUtcExtractedAt": "2026-06-01T10:09:38.112665+00:00"
 }
