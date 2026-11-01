@@ -1,5 +1,5 @@
 {
-  "count": 17,
+  "count": 19,
   "includeVisitCount": true,
   "spots": [
     {
@@ -57,6 +57,18 @@
       "visitCount": 1
     },
     {
+      "name": "Spot 28.720, -13.990",
+      "latitude": 28.724076664075255,
+      "longitude": -13.988352594897151,
+      "visitCount": 4
+    },
+    {
+      "name": "Spot 28.750, -13.920",
+      "latitude": 28.74643270857632,
+      "longitude": -13.917237175628543,
+      "visitCount": 1
+    },
+    {
       "name": "Spot 39.360, -9.360",
       "latitude": 39.36090222559869,
       "longitude": -9.364497670903802,
@@ -105,5 +117,5 @@
       "visitCount": 2
     }
   ],
-  "timestampUtcExtractedAt": "2026-10-01T11:13:32.714173+00:00"
+  "timestampUtcExtractedAt": "2026-11-01T11:32:17.719027+00:00"
 }
